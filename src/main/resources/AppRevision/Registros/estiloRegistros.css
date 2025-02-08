@@ -1,0 +1,56 @@
+#anchorPane{
+    -fx-background-color: gray;
+}
+#backPane{
+    -fx-background-color: rgba(255,255,255, 0.6);
+    -fx-background-radius: 10;
+}
+
+#tabla {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0, 0, 0);
+}
+
+#tabla .column-header {
+    -fx-background-color: #343a40;
+    -fx-text-fill: rgba(255, 255, 255);
+    -fx-font-weight: normal;
+    -fx-alignment: center-left;
+}
+#tabla .column-header .label {
+    -fx-text-fill: white;
+}
+
+/* Row styling */
+#tabla .table-row-cell {
+    -fx-border-color: #dddddd;
+    -fx-alternate-row-fill-visible: true;
+    -fx-background-color: white;
+    -fx-alternate-row-fill: #f3f3f3;
+}
+
+#tabla .table-row-cell:hover {
+    -fx-background-color: #f1f1f1;
+}
+
+
+#table .left {
+    -fx-alignment: center-left;
+}
+
+#table .middle {
+    -fx-alignment: center;
+}
+
+#table .right {
+    -fx-alignment: center-right;
+}
+
+.cargarBotones {
+    -fx-background-radius: 5;
+    -fx-background-color: rgba(56, 103, 214);
+    -fx-text-fill: white;
+}
