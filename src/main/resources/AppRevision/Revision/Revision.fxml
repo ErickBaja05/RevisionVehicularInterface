@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -35,7 +34,7 @@
                               <TextField fx:id="cedulaField" layoutX="436.0" layoutY="132.0" prefHeight="41.0" prefWidth="200.0" promptText="Ingrese la cédula" />
                               <TextField fx:id="correoField" layoutX="131.0" layoutY="227.0" prefHeight="41.0" prefWidth="202.0" promptText="Ingrese el correo" />
                               <TextField fx:id="telefonoField" layoutX="437.0" layoutY="227.0" prefHeight="41.0" prefWidth="199.0" promptText="Ingrese el número telefónico" />
-                              <Button fx:id="datosDuenio" layoutX="432.0" layoutY="333.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="200.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" stylesheets="@estiloRevision.css" text="Ingresar Datos" />
+                              <Button fx:id="datosDuenio" layoutX="258.0" layoutY="330.0" mnemonicParsing="false" onAction="#ingresarPropietario" prefHeight="36.0" prefWidth="200.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" stylesheets="@estiloRevision.css" text="Ingresar Datos" />
                               <Label layoutX="62.0" layoutY="142.0" text="Nombre:">
                                  <font>
                                     <Font size="15.0" />
@@ -56,18 +55,12 @@
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="60.0" layoutY="341.0" prefHeight="21.0" prefWidth="71.0" text="Provincia:">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                              <ComboBox fx:id="provinciasBox" layoutX="132.0" layoutY="331.0" prefHeight="40.0" prefWidth="199.0" promptText="Elija la provincia" style="-fx-background-color: white;" />
                            </children></Pane>
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab closable="false" text="Datos del Auto I">
+          <Tab fx:id="datosAutoI" closable="false" text="Datos del Vehículo I">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -76,27 +69,27 @@
                               <Pane layoutX="-8.0" layoutY="2.0" prefHeight="623.0" prefWidth="1202.0">
                                  <children>
                                     <Button fx:id="validacionProp" layoutX="51.0" layoutY="68.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="198.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Validar Información del Propietario" textAlignment="CENTER" wrapText="true" />
-                                    <Label layoutX="22.0" layoutY="144.0" text="Tipo de Vehículo" />
-                                    <Label layoutX="20.0" layoutY="299.0" prefHeight="17.0" prefWidth="55.0" text="Placa" />
-                                    <TextField fx:id="placaField" layoutX="67.0" layoutY="295.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese la placa" />
-                                    <Pane id="Motor" layoutX="339.0" layoutY="328.0" prefHeight="240.0" prefWidth="245.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
+                                    <Label layoutX="16.0" layoutY="182.0" text="Tipo de Vehículo" />
+                                    <Label layoutX="15.0" layoutY="332.0" prefHeight="17.0" prefWidth="55.0" text="Placa" />
+                                    <TextField fx:id="placaField" disable="true" editable="false" layoutX="62.0" layoutY="328.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese la placa" />
+                                    <Pane id="Motor" layoutX="339.0" layoutY="328.0" prefHeight="273.0" prefWidth="245.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
                                        <children>
                                           <Text layoutX="102.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Motor">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <Label layoutX="14.0" layoutY="51.0" text="Tipo" />
-                                          <ChoiceBox fx:id="tipoMotor" layoutX="52.0" layoutY="47.0" prefHeight="25.0" prefWidth="176.0" style="-fx-background-color: white;" />
-                                          <Label layoutX="14.0" layoutY="89.0" text="Temperatura" />
-                                          <TextField fx:id="tempMotField" layoutX="92.0" layoutY="85.0" prefHeight="25.0" prefWidth="135.0" promptText="Ingrese la temperatura" />
-                                          <Label layoutX="59.0" layoutY="130.0" prefHeight="17.0" prefWidth="128.0" text="¿El motor posee fugas?" />
-                                          <RadioButton layoutX="64.0" layoutY="160.0" mnemonicParsing="false" text="Si">
+                                          <Label layoutX="16.0" layoutY="72.0" text="Tipo" />
+                                          <Label layoutX="16.0" layoutY="110.0" text="Temperatura" />
+                                          <TextField fx:id="tempMotField" layoutX="94.0" layoutY="106.0" prefHeight="25.0" prefWidth="135.0" promptText="Ingrese la temperatura" />
+                                          <Label layoutX="61.0" layoutY="151.0" prefHeight="17.0" prefWidth="128.0" text="¿El motor posee fugas?" />
+                                          <RadioButton layoutX="66.0" layoutY="181.0" mnemonicParsing="false" text="Si">
                                              <toggleGroup>
                                                 <ToggleGroup fx:id="fugas" />
                                              </toggleGroup>
                                           </RadioButton>
-                                          <RadioButton layoutX="63.0" layoutY="186.0" mnemonicParsing="false" text="No" toggleGroup="$fugas" />
+                                          <RadioButton layoutX="65.0" layoutY="207.0" mnemonicParsing="false" text="No" toggleGroup="$fugas" />
+                                          <ComboBox fx:id="tipoMotor" layoutX="48.0" layoutY="68.0" prefHeight="25.0" prefWidth="185.0" promptText="Elija el tipo de Motor" style="-fx-background-color: white;" />
                                        </children>
                                     </Pane>
                                     <Pane id="Motor" layoutX="278.0" layoutY="68.0" prefHeight="244.0" prefWidth="892.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
@@ -106,140 +99,154 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <Pane layoutX="11.0" layoutY="51.0">
+                                          <Pane fx:id="panelLlantas2" disable="true" layoutX="11.0" layoutY="76.0">
                                              <children>
-                                                <Label layoutY="30.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 1" />
-                                                <ComboBox fx:id="labrado1" layoutX="60.0" layoutY="25.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <TextField fx:id="presionField1" layoutX="172.0" layoutY="26.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
-                                                <Label layoutY="69.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 2" />
-                                                <ComboBox fx:id="labrado2" layoutX="60.0" layoutY="64.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <TextField fx:id="presionField2" layoutX="172.0" layoutY="65.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
-                                                <Label layoutX="89.0" prefHeight="17.0" prefWidth="49.0" text="Labrado" />
-                                                <Label layoutX="199.0" prefHeight="17.0" prefWidth="49.0" text="Presión" />
-                                                <Label layoutX="1.0" layoutY="114.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 3" />
-                                                <ComboBox fx:id="labrado3" layoutX="61.0" layoutY="109.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <TextField fx:id="presionField3" layoutX="173.0" layoutY="110.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
-                                                <Label layoutX="1.0" layoutY="154.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 4" />
-                                                <ComboBox fx:id="labrado4" layoutX="61.0" layoutY="149.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <TextField fx:id="presionField4" layoutX="173.0" layoutY="150.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
+                                                <Label layoutY="5.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 1" />
+                                                <ComboBox fx:id="labrado1" layoutX="60.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <TextField fx:id="presionField1" layoutX="172.0" layoutY="1.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
+                                                <Label layoutY="44.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 2" />
+                                                <ComboBox fx:id="labrado2" layoutX="60.0" layoutY="39.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <TextField fx:id="presionField2" layoutX="172.0" layoutY="40.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
                                              </children>
                                           </Pane>
-                                          <Pane layoutX="310.0" layoutY="51.0">
+                                          <Label layoutX="100.0" layoutY="51.0" prefHeight="17.0" prefWidth="49.0" text="Labrado" />
+                                          <Label layoutX="210.0" layoutY="51.0" prefHeight="17.0" prefWidth="49.0" text="Presión" />
+                                          <Pane fx:id="panelLlantas4" disable="true" layoutX="12.0" layoutY="160.0">
                                              <children>
-                                                <Label layoutY="30.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 5" />
-                                                <ComboBox fx:id="labrado5" layoutX="60.0" layoutY="25.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <TextField fx:id="presionField5" layoutX="172.0" layoutY="26.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
-                                                <Label layoutX="1.0" layoutY="69.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 6" />
-                                                <ComboBox fx:id="labrado6" layoutX="60.0" layoutY="64.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <TextField fx:id="presionField6" layoutX="172.0" layoutY="65.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
-                                                <Label layoutX="89.0" prefHeight="17.0" prefWidth="49.0" text="Labrado" />
-                                                <Label layoutX="199.0" prefHeight="17.0" prefWidth="49.0" text="Presión" />
-                                                <Label layoutX="1.0" layoutY="114.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 7" />
-                                                <ComboBox fx:id="labrado7" layoutX="61.0" layoutY="109.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <TextField fx:id="presionField7" layoutX="173.0" layoutY="110.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
-                                                <Label layoutX="1.0" layoutY="154.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 8" />
-                                                <ComboBox fx:id="labrado8" layoutX="61.0" layoutY="149.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <TextField fx:id="presionField8" layoutX="173.0" layoutY="150.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
+                                                <Label layoutY="5.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 3" />
+                                                <ComboBox fx:id="labrado3" layoutX="60.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <TextField fx:id="presionField3" layoutX="172.0" layoutY="1.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
+                                                <Label layoutY="45.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 4" />
+                                                <ComboBox fx:id="labrado4" layoutX="60.0" layoutY="40.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <TextField fx:id="presionField4" layoutX="172.0" layoutY="41.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
                                              </children>
                                           </Pane>
-                                          <Pane layoutX="605.0" layoutY="51.0">
+                                          <Pane fx:id="panelLlantas6" disable="true" layoutX="310.0" layoutY="76.0">
                                              <children>
-                                                <Label layoutY="30.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 9" />
-                                                <ComboBox fx:id="labrado9" layoutX="60.0" layoutY="25.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <TextField fx:id="presionField9" layoutX="172.0" layoutY="26.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
-                                                <Label layoutY="69.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 10" />
-                                                <ComboBox fx:id="labrado10" layoutX="60.0" layoutY="64.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <TextField fx:id="presionField10" layoutX="172.0" layoutY="65.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
-                                                <Label layoutX="89.0" prefHeight="17.0" prefWidth="49.0" text="Labrado" />
-                                                <Label layoutX="199.0" prefHeight="17.0" prefWidth="49.0" text="Presión" />
-                                                <Label layoutX="1.0" layoutY="114.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 11" />
-                                                <ComboBox fx:id="labrado11" layoutX="61.0" layoutY="109.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <TextField fx:id="presionField11" layoutX="173.0" layoutY="110.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
-                                                <Label layoutX="1.0" layoutY="154.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 12" />
-                                                <ComboBox fx:id="labrado12" layoutX="61.0" layoutY="149.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <TextField fx:id="presionField12" layoutX="173.0" layoutY="150.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
+                                                <Label layoutY="5.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 5" />
+                                                <ComboBox fx:id="labrado5" layoutX="60.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <TextField fx:id="presionField5" layoutX="172.0" layoutY="1.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
+                                                <Label layoutX="1.0" layoutY="44.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 6" />
+                                                <ComboBox fx:id="labrado6" layoutX="60.0" layoutY="39.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <TextField fx:id="presionField6" layoutX="172.0" layoutY="40.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
+                                             </children>
+                                          </Pane>
+                                          <Label layoutX="399.0" layoutY="51.0" prefHeight="17.0" prefWidth="49.0" text="Labrado" />
+                                          <Label layoutX="509.0" layoutY="51.0" prefHeight="17.0" prefWidth="49.0" text="Presión" />
+                                          <Pane fx:id="panelLlantas8" disable="true" layoutX="311.0" layoutY="160.0">
+                                             <children>
+                                                <Label layoutY="5.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 7" />
+                                                <ComboBox fx:id="labrado7" layoutX="60.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <TextField fx:id="presionField7" layoutX="172.0" layoutY="1.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
+                                                <Label layoutY="45.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 8" />
+                                                <ComboBox fx:id="labrado8" layoutX="60.0" layoutY="40.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <TextField fx:id="presionField8" layoutX="172.0" layoutY="41.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
+                                             </children>
+                                          </Pane>
+                                          <Pane fx:id="panelLlantas10" disable="true" layoutX="605.0" layoutY="76.0">
+                                             <children>
+                                                <Label layoutY="5.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 9" />
+                                                <ComboBox fx:id="labrado9" layoutX="60.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <TextField fx:id="presionField9" layoutX="172.0" layoutY="1.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
+                                                <Label layoutY="44.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 10" />
+                                                <ComboBox fx:id="labrado10" layoutX="60.0" layoutY="39.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <TextField fx:id="presionField10" layoutX="172.0" layoutY="40.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
+                                             </children>
+                                          </Pane>
+                                          <Label layoutX="694.0" layoutY="51.0" prefHeight="17.0" prefWidth="49.0" text="Labrado" />
+                                          <Label layoutX="804.0" layoutY="51.0" prefHeight="17.0" prefWidth="49.0" text="Presión" />
+                                          <Pane fx:id="panelLlantas12" disable="true" layoutX="606.0" layoutY="160.0">
+                                             <children>
+                                                <Label layoutY="5.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 11" />
+                                                <ComboBox fx:id="labrado11" layoutX="60.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <TextField fx:id="presionField11" layoutX="172.0" layoutY="1.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
+                                                <Label layoutY="45.0" prefHeight="17.0" prefWidth="50.0" text="Llanta 12" />
+                                                <ComboBox fx:id="labrado12" layoutX="60.0" layoutY="40.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <TextField fx:id="presionField12" layoutX="172.0" layoutY="41.0" prefHeight="25.0" prefWidth="102.0" promptText="Presión" />
                                              </children>
                                           </Pane>
                                        </children>
                                     </Pane>
-                                    <Label layoutX="20.0" layoutY="340.0" prefHeight="17.0" prefWidth="97.0" text="Número de Ejes" />
-                                    <ComboBox fx:id="tipoVehiculo" layoutX="116.0" layoutY="139.0" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: white;" />
-                                    <ComboBox fx:id="nEjes" layoutX="118.0" layoutY="335.0" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: white;" />
-                                    <Pane id="Motor" layoutX="601.0" layoutY="326.0" prefHeight="243.0" prefWidth="339.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
+                                    <Label layoutX="15.0" layoutY="373.0" prefHeight="17.0" prefWidth="97.0" text="Número de Ejes" />
+                                    <ComboBox fx:id="tipoVehiculo" layoutX="110.0" layoutY="177.0" onAction="#elegirTipoVehiculo" prefHeight="27.0" prefWidth="148.0" promptText="Elija el tipo" style="-fx-background-color: white;" />
+                                    <ComboBox fx:id="nEjes" layoutX="113.0" layoutY="368.0" onAction="#elegirNEjes" prefHeight="27.0" prefWidth="148.0" promptText="Ingrese los ejes" style="-fx-background-color: white;" />
+                                    <Pane id="Motor" layoutX="601.0" layoutY="326.0" prefHeight="276.0" prefWidth="339.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
                                        <children>
                                           <Text layoutX="151.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Luces">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <Pane layoutX="11.0" layoutY="51.0" prefHeight="165.0" prefWidth="314.0">
+                                          <Pane layoutX="12.0" layoutY="69.0" prefHeight="165.0" prefWidth="314.0">
                                              <children>
                                                 <Label layoutY="30.0" prefHeight="17.0" prefWidth="66.0" text="Delanteras" />
-                                                <ComboBox fx:id="estadoLuzDel" layoutX="78.0" layoutY="25.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
+                                                <ComboBox fx:id="estadoLuzDel" layoutX="78.0" layoutY="25.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
                                                 <Label layoutX="107.0" prefHeight="17.0" prefWidth="49.0" text="Estado" />
                                                 <Label layoutX="206.0" prefHeight="17.0" prefWidth="70.0" text="Luminosidad" />
                                                 <Label layoutY="65.0" prefHeight="17.0" prefWidth="66.0" text="Traseras" />
-                                                <ComboBox fx:id="estadoLuzTras" layoutX="78.0" layoutY="60.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
+                                                <ComboBox fx:id="estadoLuzTras" layoutX="78.0" layoutY="60.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
                                                 <Label layoutY="99.0" prefHeight="17.0" prefWidth="66.0" text="Parqueo" />
-                                                <ComboBox fx:id="estadoLuzPar" layoutX="78.0" layoutY="94.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
+                                                <ComboBox fx:id="estadoLuzPar" layoutX="78.0" layoutY="94.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
                                                 <Label layoutY="136.0" prefHeight="17.0" prefWidth="66.0" text="Neblineros" />
-                                                <ComboBox fx:id="estadoLuzNeb" layoutX="78.0" layoutY="131.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <ComboBox fx:id="lumLuzDel" layoutX="192.0" layoutY="25.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <ComboBox fx:id="lumLuzTras" layoutX="192.0" layoutY="60.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <ComboBox fx:id="lumLuzPar" layoutX="192.0" layoutY="94.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
-                                                <ComboBox fx:id="lumLuzNeb" layoutX="192.0" layoutY="131.0" prefHeight="27.0" prefWidth="99.0" style="-fx-background-color: white;" />
+                                                <ComboBox fx:id="estadoLuzNeb" layoutX="78.0" layoutY="131.0" prefHeight="27.0" prefWidth="99.0" promptText="Estado" style="-fx-background-color: white;" />
+                                                <ComboBox fx:id="lumLuzDel" layoutX="192.0" layoutY="25.0" prefHeight="27.0" prefWidth="99.0" promptText="Luz" style="-fx-background-color: white;" />
+                                                <ComboBox fx:id="lumLuzTras" layoutX="192.0" layoutY="60.0" prefHeight="27.0" prefWidth="99.0" promptText="Luz" style="-fx-background-color: white;" />
+                                                <ComboBox fx:id="lumLuzPar" layoutX="192.0" layoutY="94.0" prefHeight="27.0" prefWidth="99.0" promptText="Luz" style="-fx-background-color: white;" />
+                                                <ComboBox fx:id="lumLuzNeb" layoutX="192.0" layoutY="131.0" prefHeight="27.0" prefWidth="99.0" promptText="Luz" style="-fx-background-color: white;" />
                                              </children>
                                           </Pane>
                                        </children>
                                     </Pane>
-                                    <Pane id="Motor" layoutX="954.0" layoutY="326.0" prefHeight="243.0" prefWidth="216.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
+                                    <Pane id="Motor" fx:id="panelAgregados" layoutX="954.0" layoutY="326.0" prefHeight="278.0" prefWidth="216.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
                                        <children>
                                           <Text layoutX="75.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agregados">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
                                           </Text>
-                                          <Label layoutX="24.0" layoutY="61.0" prefHeight="17.0" prefWidth="111.0" text="Llanta de Seguridad" />
-                                          <Label layoutX="24.0" layoutY="113.0" prefHeight="17.0" prefWidth="149.0" text="Cinturones en buen estado" />
-                                          <Label layoutX="24.0" layoutY="169.0" prefHeight="17.0" prefWidth="167.0" text="Kit de Emergencia" />
-                                          <RadioButton layoutX="37.0" layoutY="88.0" mnemonicParsing="false" text="Si">
+                                          <Label layoutX="49.0" layoutY="73.0" prefHeight="17.0" prefWidth="111.0" text="Llanta de Seguridad" />
+                                          <Label layoutX="30.0" layoutY="131.0" prefHeight="17.0" prefWidth="149.0" text="Cinturones en buen estado" />
+                                          <Label layoutX="49.0" layoutY="181.0" prefHeight="17.0" prefWidth="167.0" text="Kit de Emergencia" />
+                                          <RadioButton layoutX="62.0" layoutY="100.0" mnemonicParsing="false" text="Si">
                                              <toggleGroup>
                                                 <ToggleGroup fx:id="LantasSeg" />
                                              </toggleGroup>
                                           </RadioButton>
-                                          <RadioButton layoutX="90.0" layoutY="88.0" mnemonicParsing="false" text="No" toggleGroup="$LantasSeg" />
-                                          <RadioButton layoutX="37.0" layoutY="140.0" mnemonicParsing="false" text="Si">
+                                          <RadioButton layoutX="115.0" layoutY="100.0" mnemonicParsing="false" text="No" toggleGroup="$LantasSeg" />
+                                          <RadioButton layoutX="62.0" layoutY="152.0" mnemonicParsing="false" text="Si">
                                              <toggleGroup>
                                                 <ToggleGroup fx:id="Cinturon" />
                                              </toggleGroup>
                                           </RadioButton>
-                                          <RadioButton layoutX="90.0" layoutY="140.0" mnemonicParsing="false" text="No" toggleGroup="$Cinturon" />
-                                          <RadioButton layoutX="37.0" layoutY="195.0" mnemonicParsing="false" text="Si">
+                                          <RadioButton layoutX="115.0" layoutY="152.0" mnemonicParsing="false" text="No" toggleGroup="$Cinturon" />
+                                          <RadioButton layoutX="62.0" layoutY="207.0" mnemonicParsing="false" text="Si">
                                              <toggleGroup>
                                                 <ToggleGroup fx:id="kitEmerg" />
                                              </toggleGroup>
                                           </RadioButton>
-                                          <RadioButton layoutX="90.0" layoutY="195.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="42.0" text="No" toggleGroup="$kitEmerg" />
+                                          <RadioButton layoutX="115.0" layoutY="207.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="42.0" text="No" toggleGroup="$kitEmerg" />
                                        </children>
                                     </Pane>
-                                    <Button fx:id="continuacionLlenado" layoutX="50.0" layoutY="524.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Guardar y Continuar a la siguiente Sección" textAlignment="CENTER" wrapText="true" />
+                                    <Button fx:id="continuacionLlenado" layoutX="50.0" layoutY="539.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Guardar y Continuar a la siguiente Sección" textAlignment="CENTER" wrapText="true" />
                                     <Text layoutX="339.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese los Datos del Vehículo" textAlignment="CENTER" wrappingWidth="634.626953125">
                                        <font>
                                           <Font name="Calibri" size="30.0" />
                                        </font>
                                     </Text>
-                                    <Label layoutX="19.0" layoutY="196.0" prefHeight="17.0" prefWidth="46.0" text="Marca" />
-                                    <Label layoutX="19.0" layoutY="228.0" prefHeight="17.0" prefWidth="46.0" text="Modelo" />
-                                    <Label layoutX="20.0" layoutY="266.0" prefHeight="17.0" prefWidth="97.0" text="Color" />
-                                    <TextField fx:id="marcaField" layoutX="67.0" layoutY="192.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese la marca" />
-                                    <TextField fx:id="modeloField" layoutX="67.0" layoutY="224.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese el modelo" />
-                                    <TextField fx:id="colorField" layoutX="67.0" layoutY="262.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese el color" />
-                                    <Label layoutX="19.0" layoutY="387.0" prefHeight="17.0" prefWidth="97.0" text="Cilindraje" />
-                                    <ComboBox fx:id="nCilindraje" layoutX="118.0" layoutY="383.0" prefHeight="21.0" prefWidth="148.0" style="-fx-background-color: white;" />
-                                    <Label layoutX="19.0" layoutY="426.0" prefHeight="17.0" prefWidth="97.0" text="Transimision" />
-                                    <ComboBox fx:id="tipoTransmision" layoutX="118.0" layoutY="421.0" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: white;" />
-                                    <Label layoutX="20.0" layoutY="469.0" prefHeight="17.0" prefWidth="97.0" text="Cap. de Carga" />
-                                    <TextField fx:id="capCargaField" layoutX="101.0" layoutY="465.0" prefHeight="25.0" prefWidth="165.0" promptText="Ingrese Capacidad de Carga" />
+                                    <Label layoutX="14.0" layoutY="229.0" prefHeight="17.0" prefWidth="46.0" text="Marca" />
+                                    <Label layoutX="14.0" layoutY="261.0" prefHeight="17.0" prefWidth="46.0" text="Modelo" />
+                                    <Label layoutX="15.0" layoutY="299.0" prefHeight="17.0" prefWidth="97.0" text="Color" />
+                                    <TextField fx:id="marcaField" layoutX="62.0" layoutY="225.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese la marca" />
+                                    <TextField fx:id="modeloField" layoutX="62.0" layoutY="257.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese el modelo" />
+                                    <TextField fx:id="colorField" layoutX="62.0" layoutY="295.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese el color" />
+                                    <Label layoutX="14.0" layoutY="420.0" prefHeight="17.0" prefWidth="97.0" text="Cilindraje" />
+                                    <ComboBox fx:id="nCilindraje" layoutX="113.0" layoutY="416.0" prefHeight="21.0" prefWidth="148.0" promptText="Elija el Cilindraje" style="-fx-background-color: white;" />
+                                    <Label layoutX="14.0" layoutY="459.0" prefHeight="17.0" prefWidth="97.0" text="Transimision" />
+                                    <ComboBox fx:id="tipoTransmision" layoutX="113.0" layoutY="454.0" prefHeight="27.0" prefWidth="148.0" promptText="Elija la transimisión" style="-fx-background-color: white;" />
+                                    <Label layoutX="15.0" layoutY="502.0" prefHeight="17.0" prefWidth="97.0" text="Cap. de Carga" />
+                                    <TextField fx:id="capCargaField" layoutX="96.0" layoutY="498.0" prefHeight="25.0" prefWidth="165.0" promptText="Ingrese Capacidad de Carga" />
+                                    <Label layoutX="16.0" layoutY="140.0" prefHeight="21.0" prefWidth="84.0" text="Prov. Vehículo" />
+                                    <ComboBox fx:id="provinciasBox" layoutX="110.0" layoutY="138.0" onAction="#elegirProvincia" prefHeight="21.0" prefWidth="151.0" promptText="Elija la provincia" style="-fx-background-color: white;" />
                                  </children>
                               </Pane>
                            </children></Pane>
@@ -247,7 +254,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab closable="false" text="Datos del Auto II">
+            <Tab closable="false" text="Datos del Vehículo II">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -470,7 +477,7 @@
                                     <Pane id="Motor" layoutX="824.0" layoutY="127.0" prefHeight="455.0" prefWidth="355.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
                                        <children>
                                           <Button fx:id="resultadosBoton" layoutX="105.0" layoutY="294.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="164.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Obtener resultados" textAlignment="CENTER" wrapText="true" />
-                                          <Button fx:id="menuPrincipalBoton" layoutX="105.0" layoutY="352.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="164.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Volver al Menu Principal" textAlignment="CENTER" wrapText="true" />
+                                          <Button fx:id="menuPrincipalBoton" layoutX="105.0" layoutY="352.0" mnemonicParsing="false" onAction="#irMenuPrincipal" prefHeight="42.0" prefWidth="164.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Volver al Menu Principal" textAlignment="CENTER" wrapText="true" />
                                           <ImageView fitHeight="156.0" fitWidth="156.0" layoutX="109.0" layoutY="59.0">
                                              <image>
                                                 <Image url="@imagenes/Resultados.png" />

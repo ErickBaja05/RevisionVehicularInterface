@@ -13,6 +13,7 @@ public class VehiculoLiviano extends Vehiculo {
         this.cinturonSeguridad = cinturonSeguridad;
         this.kitPrimerosAuxilios = kitPrimerosAuxilios;
     }
+    public VehiculoLiviano() {}
 
     public boolean isLlantaEmergencia() {
         return llantaEmergencia;

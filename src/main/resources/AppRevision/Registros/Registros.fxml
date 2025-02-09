@@ -35,9 +35,10 @@
                   <Font name="Calibri" size="40.0" />
                </font>
             </Text>
-            <Button id="cargarBoton" fx:id="cargarResultados" layoutX="321.0" layoutY="433.0" mnemonicParsing="false" onAction="#cargarArchivo" prefHeight="30.0" prefWidth="118.0" styleClass="cargarBotones" stylesheets="@estiloRegistros.css" text="Cargar Resultados" />
+            <Button id="cargarBoton" fx:id="cargarResultados" layoutX="160.0" layoutY="431.0" mnemonicParsing="false" onAction="#cargarArchivo" prefHeight="42.0" prefWidth="164.0" styleClass="cargarBotones" stylesheets="@estiloRegistros.css" text="Cargar Resultados" />
             <TextField fx:id="buscar" disable="true" layoutX="137.0" layoutY="97.0" onAction="#buscar" prefHeight="25.0" prefWidth="575.0" promptText="Ingrese el número de placa" />
             <Label layoutX="36.0" layoutY="101.0" text="Buscar Vehículo:" />
+            <Button fx:id="menuPrincipalBoton" layoutX="441.0" layoutY="431.0" mnemonicParsing="false" onAction="#irMenuPrincipal" prefHeight="42.0" prefWidth="164.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Volver al Menu Principal" textAlignment="CENTER" wrapText="true" />
          </children>
       </Pane>
    </children>

@@ -13,6 +13,7 @@ public class VehiculoPesado extends Vehiculo{
         this.cinturonSeguridad = cinturonSeguridad;
         this.kitPrimerosAuxilios = kitPrimerosAuxilios;
     }
+    public VehiculoPesado() {}
 
     public int getCapacidadCarga() {
         return capacidadCarga;
