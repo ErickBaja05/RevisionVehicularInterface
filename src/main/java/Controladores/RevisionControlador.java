@@ -25,6 +25,8 @@ public class RevisionControlador implements Initializable {
     private final Integer[] posiblesEjes = {2,3,4,5,6};
     private final String[] estadosGenerales = {"Ideal", "Aceptable", "Deficiente"};
     private final String[] tiposDeMotor ={"Electrico", "Gasolina", "Diesel"};
+    private final String[] posibleCilindrajes = {"100", "200", "300", "400", "400+"};
+    private final String[] posibleTransmision ={"Manual", "Automatico"};
 
     @FXML
     private ToggleGroup Alineacion;
@@ -110,7 +112,7 @@ public class RevisionControlador implements Initializable {
     private ComboBox<String> labrado9;
 
     @FXML
-    private ToggleGroup loquedijo;
+    private ToggleGroup kitEmerg;
 
     @FXML
     private ComboBox<String> lumLuzDel;
@@ -184,6 +186,20 @@ public class RevisionControlador implements Initializable {
     private ComboBox<String> tipoVehiculo;
 
     @FXML
+    private ComboBox<String> nCilindraje;
+    //Varios
+    @FXML
+    private TextField marcaField;
+    @FXML
+    private TextField modeloField;
+    @FXML
+    private TextField colorField;
+    @FXML
+    private ComboBox<String> tipoTransmision;
+    @FXML
+    private TextField capCargaField;
+
+    @FXML
     private Button validacionProp;
 
     //Labels de los resultados
@@ -250,6 +266,11 @@ public class RevisionControlador implements Initializable {
         lumLuzTras.getItems().addAll(estadosGenerales);
         lumLuzPar.getItems().addAll(estadosGenerales);
         lumLuzNeb.getItems().addAll(estadosGenerales);
+
+        //Agregando las opciones para elementos varios del vehiculo
+        nCilindraje.getItems().addAll(posibleCilindrajes);
+        tipoTransmision.getItems().addAll(posibleTransmision);
+
 
     }
 }
