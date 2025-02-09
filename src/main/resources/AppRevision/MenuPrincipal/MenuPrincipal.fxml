@@ -10,6 +10,11 @@
 
 <AnchorPane id="anchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@estiloMenuPrincipal.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.MenuPrincipalControlador">
    <children>
+      <ImageView fitHeight="606.0" fitWidth="800.0">
+         <image>
+            <Image url="@imagenes/fondo.jpg" />
+         </image>
+      </ImageView>
       <Pane layoutX="38.0" layoutY="109.0" prefHeight="446.0" prefWidth="336.0" styleClass="opPanes">
          <children>
             <Text layoutX="85.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresar Nuevo Vehículo para la Revisión" textAlignment="CENTER" wrappingWidth="166.51171875">

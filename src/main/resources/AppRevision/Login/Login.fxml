@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -11,6 +13,11 @@
 
 <AnchorPane id="anchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@estiloLogin.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.LoginControlador">
    <children>
+      <ImageView fitHeight="600.0" fitWidth="800.0">
+         <image>
+            <Image url="@imagenes/Login.jpg" />
+         </image>
+      </ImageView>
       <Pane id="backPane" layoutX="66.0" layoutY="42.0" prefHeight="517.0" prefWidth="668.0" stylesheets="@estiloLogin.css">
          <children>
             <TextField fx:id="usuario" layoutX="252.0" layoutY="223.0" prefHeight="33.0" prefWidth="202.0" />
@@ -26,7 +33,7 @@
                </font>
             </Label>
             <Button id="loginBoton" fx:id="login" layoutX="273.0" layoutY="360.0" mnemonicParsing="false" onAction="#enLogin" prefHeight="33.0" prefWidth="106.0" stylesheets="@estiloLogin.css" text="Ingresar" />
-            <Text layoutX="120.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido al Sistema de Revisión Vehicular">
+            <Text layoutX="120.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido al Sistema de Revisión Vehicular">
                <font>
                   <Font name="Calibri" size="24.0" />
                </font>
