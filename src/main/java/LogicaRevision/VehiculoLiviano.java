@@ -1,0 +1,58 @@
+package LogicaRevision;
+
+public class VehiculoLiviano extends Vehiculo {
+    private boolean llantaEmergencia;
+    private String tipoTransmision;
+    private int numeroPuertas;
+    private boolean cinturonSeguridad;
+    private boolean kitPrimerosAuxilios;
+
+    public VehiculoLiviano(int carId, String color, String marca, String modelo, String placa, int nFrenos, int nLlantas, Propietario propietario, int anio, boolean llantaEmergencia, String tipoTransmision, int numeroPuertas, boolean cinturonSeguridad, boolean kitPrimerosAuxilios) {
+        super(carId, color, marca, modelo, placa, nFrenos, nLlantas, propietario, anio);
+        this.llantaEmergencia = llantaEmergencia;
+        this.tipoTransmision = tipoTransmision;
+        this.numeroPuertas = numeroPuertas;
+        this.cinturonSeguridad = cinturonSeguridad;
+        this.kitPrimerosAuxilios = kitPrimerosAuxilios;
+    }
+
+    public boolean isLlantaEmergencia() {
+        return llantaEmergencia;
+    }
+
+    public void setLlantaEmergencia(boolean llantaEmergencia) {
+        this.llantaEmergencia = llantaEmergencia;
+    }
+
+    public String getTipoTransmision() {
+        return tipoTransmision;
+    }
+
+    public void setTipoTransmision(String tipoTransmision) {
+        this.tipoTransmision = tipoTransmision;
+    }
+
+    public int getNumeroPuertas() {
+        return numeroPuertas;
+    }
+
+    public void setNumeroPuertas(int numeroPuertas) {
+        this.numeroPuertas = numeroPuertas;
+    }
+
+    public boolean isCinturonSeguridad() {
+        return cinturonSeguridad;
+    }
+
+    public void setCinturonSeguridad(boolean cinturonSeguridad) {
+        this.cinturonSeguridad = cinturonSeguridad;
+    }
+
+    public boolean isKitPrimerosAuxilios() {
+        return kitPrimerosAuxilios;
+    }
+
+    public void setKitPrimerosAuxilios(boolean kitPrimerosAuxilios) {
+        this.kitPrimerosAuxilios = kitPrimerosAuxilios;
+    }
+}

@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import LogicaRevision.*;
 
 public class RevisionControlador implements Initializable {
 
