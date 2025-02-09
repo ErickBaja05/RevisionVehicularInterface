@@ -5,6 +5,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -12,7 +14,12 @@
 
 <AnchorPane id="anchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@estiloRegistros.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controladores.RegistrosControlador">
    <children>
-      <Pane id="backPane" layoutX="21.0" layoutY="46.0" prefHeight="509.0" prefWidth="759.0" stylesheets="@estiloRegistros.css">
+      <ImageView fitHeight="608.0" fitWidth="825.0">
+         <image>
+            <Image url="@imagenes/RegistrosFondo.jpg" />
+         </image>
+      </ImageView>
+      <Pane id="backPane" layoutX="33.0" layoutY="50.0" prefHeight="509.0" prefWidth="759.0" stylesheets="@estiloRegistros.css">
          <children>
             <TableView id="tabla" layoutX="10.0" layoutY="147.0" prefHeight="270.0" prefWidth="741.0" stylesheets="@estiloRegistros.css">
               <columns>
@@ -23,7 +30,7 @@
                   <TableColumn prefWidth="112.0" text="Multa" />
               </columns>
             </TableView>
-            <Text layoutX="174.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultados de la Revisión" wrappingWidth="411.9609375">
+            <Text layoutX="175.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultados de la Revisión" wrappingWidth="411.9609375">
                <font>
                   <Font name="Calibri" size="40.0" />
                </font>

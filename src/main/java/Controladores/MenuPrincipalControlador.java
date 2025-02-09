@@ -18,6 +18,7 @@ public class MenuPrincipalControlador {
 
     @FXML
     void irRegistros(ActionEvent event) {
+        this.revBoton.getScene().getWindow().hide();
         Stage home = new Stage();
         Parent root = null;
         try {
@@ -33,6 +34,7 @@ public class MenuPrincipalControlador {
 
     @FXML
     void irRevision(ActionEvent event) {
+        this.revBoton.getScene().getWindow().hide();
         Stage home = new Stage();
         Parent root = null;
         try {

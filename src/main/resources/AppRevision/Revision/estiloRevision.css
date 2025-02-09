@@ -1,0 +1,33 @@
+/* Modificaciones esteticas a las pestanias*/
+.tab-pane {
+    -fx-background-color: #ECEFF1;
+
+}
+.tab-pane .tab-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+.tab-pane .tab {
+    -fx-background-color: #343a40;
+    -fx-padding: 3 5;
+    -fx-text-fill: white;
+    -fx-border-radius: 3px;
+}
+.tab-pane .tab:selected {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-radius: 3px;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.tab-pane .tab-content-area {
+    -fx-background-color: gray;
+    -fx-background-image: url("https://img.freepik.com/free-photo/repair-man-making-car-service_1303-26870.jpg?t=st=1739054759~exp=1739058359~hmac=144ee7c70d24a800995a6d9f4ad9f5777a46c538d3a5465b0485ed3668e587c2&w=1380");
+
+}
+
+#backPane{
+    -fx-background-color: rgba(255,255,255, 0.6);
+    -fx-background-radius: 10;
+}
