@@ -21,7 +21,7 @@ public class RevisionControlador implements Initializable {
 
     private final String[] tiposDeVehiculo ={"Liviano", "Pesado","Moto"};
     private final String[] estadosDeLuz = {"Ideal", "Aceptable", "Quemadas"};
-    private final Integer[] posiblesEjes = {1,2,3,4,5,6};
+    private final Integer[] posiblesEjes = {2,3,4,5,6};
     private final String[] estadosGenerales = {"Ideal", "Aceptable", "Deficiente"};
     private final String[] tiposDeMotor ={"Electrico", "Gasolina", "Diesel"};
 
