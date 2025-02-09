@@ -27,6 +27,7 @@ public class MenuPrincipalControlador {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+        home.setResizable(false);
         home.setScene(new Scene(root, 800, 600));
         home.show();
 
@@ -43,7 +44,8 @@ public class MenuPrincipalControlador {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-        home.setScene(new Scene(root, 800, 600));
+        home.setResizable(false);
+        home.setScene(new Scene(root, 1280, 720));
         home.show();
 
     }
