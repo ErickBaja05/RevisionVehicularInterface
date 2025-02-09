@@ -1,4 +1,6 @@
 package LogicaRevision;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public abstract class Vehiculo {
     private int carId;
@@ -30,6 +32,7 @@ public abstract class Vehiculo {
         this.anio = anio;
         this.tuboEscape = new TuboEscape();
     }
+    public Vehiculo() {}
 
     public int getCarId() {
         return carId;
@@ -67,8 +70,12 @@ public abstract class Vehiculo {
         return placa;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setPlaca(String placa) throws IllegalArgumentException {
+        if(verficarPlaca(placa)){
+            this.placa = placa;
+        } else {
+            throw new IllegalArgumentException("Placa Invalida");
+        }
     }
 
     public Freno[] getFrenos() {
@@ -86,7 +93,6 @@ public abstract class Vehiculo {
     public void setMotor(Motor motor) {
         this.motor = motor;
     }
-
 
 
     public Llanta[] getLlantas() {
@@ -136,5 +142,12 @@ public abstract class Vehiculo {
 
     public void setTuboEscape(TuboEscape tuboEscape) {
         this.tuboEscape = tuboEscape;
+    }
+    public boolean verficarPlaca(String placa){
+        String regex = "^[ABCEGHIJKLMNOPQRSTUVWXYXZ][A-Z]{2}-\\d{3,4}$";
+        Pattern patron = Pattern.compile(regex);
+        Matcher coincidencia = patron.matcher(placa);
+        return coincidencia.matches();
+
     }
 }

@@ -1,12 +1,20 @@
 package Controladores;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Tab;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import LogicaRevision.*;
+import javafx.scene.layout.Pane;
+import Alert.Message;
+import javafx.stage.Stage;
 
 public class RevisionControlador implements Initializable {
 
@@ -180,13 +188,35 @@ public class RevisionControlador implements Initializable {
     private TextField telefonoField;
 
     @FXML
-    private ChoiceBox<String> tipoMotor;
+    private ComboBox<String> tipoMotor;
 
     @FXML
     private ComboBox<String> tipoVehiculo;
 
     @FXML
     private ComboBox<String> nCilindraje;
+
+    //Paneles para habilitar las llantas segun los ejes
+    @FXML
+    private Pane panelLlantas10;
+
+    @FXML
+    private Pane panelLlantas12;
+
+    @FXML
+    private Pane panelLlantas2;
+
+    @FXML
+    private Pane panelLlantas4;
+
+    @FXML
+    private Pane panelLlantas6;
+
+    @FXML
+    private Pane panelLlantas8;
+
+    @FXML
+    private Tab datosAutoI;
     //Varios
     @FXML
     private TextField marcaField;
@@ -198,6 +228,8 @@ public class RevisionControlador implements Initializable {
     private ComboBox<String> tipoTransmision;
     @FXML
     private TextField capCargaField;
+    @FXML
+    private Pane panelAgregados;
 
     @FXML
     private Button validacionProp;
@@ -270,7 +302,130 @@ public class RevisionControlador implements Initializable {
         //Agregando las opciones para elementos varios del vehiculo
         nCilindraje.getItems().addAll(posibleCilindrajes);
         tipoTransmision.getItems().addAll(posibleTransmision);
+    }
+    //SECCION PROPIETARIO
 
+    //Eventos de asignacion y control en la pestaña de la información del usuario
+    Propietario propietarioVehiculo;
+    @FXML
+    void ingresarPropietario(ActionEvent event) {
+        Message msgError = new Message();
+        try{
+            propietarioVehiculo = new Propietario(cedulaField.getText(),nombreField.getText(),telefonoField.getText(),correoField.getText());
+            datosAutoI.setDisable(false);
+        } catch (IllegalArgumentException e){
+            msgError.setMessage("Algún valor ingresado como: cédula, teléfono, o correo es inválido.\nIntente nuevamente.");
+
+        } catch (NullPointerException e){
+            msgError.setMessage("Los campos del propietario no pueden dejarse vacíos");
+        }
+    }
+    //SECCION DATOS VEHICULO I
+
+    //Eventos de asignacion y control en la pestaña de Datos del Vehículo I
+    @FXML
+    void elegirProvincia(ActionEvent event) {
+        tipoVehiculo.setDisable(false);
+    }
+    @FXML
+    void elegirTipoVehiculo(ActionEvent event) {
+        placaField.setDisable(false);
+        String tipoVehiculoElegido = tipoVehiculo.getSelectionModel().getSelectedItem();
+        if(tipoVehiculoElegido.equals("Moto")){
+            nEjes.setDisable(true);
+            panelLlantas2.setDisable(false);
+            nCilindraje.setDisable(false);
+            //Deshabilitando campos innecesarios para la moto
+            tipoTransmision.setDisable(true);
+            capCargaField.setDisable(true);
+            panelAgregados.setDisable(true);
+        } else if (tipoVehiculoElegido.equals("Liviano")){
+            nEjes.setDisable(false);
+            panelLlantas2.setDisable(true);
+            panelAgregados.setDisable(false);
+            tipoTransmision.setDisable(false);
+            //Deshabilitando campos innecesarios para el auto
+            capCargaField.setDisable(true);
+            nCilindraje.setDisable(true);
+        } else if (tipoVehiculoElegido.equals("Pesado")){
+            nEjes.setDisable(false);
+            panelLlantas2.setDisable(true);
+            panelAgregados.setDisable(false);
+            capCargaField.setDisable(false);
+            //Deshabilitando campos innecesarios para el Pesado
+            nCilindraje.setDisable(true);
+            tipoTransmision.setDisable(true);
+
+        }
+    }
+    @FXML
+    void elegirNEjes(ActionEvent event) {
+        int ejes = nEjes.getSelectionModel().getSelectedItem();
+        switch(ejes){
+            case 2: {
+                panelLlantas2.setDisable(false);
+                panelLlantas4.setDisable(false);
+                panelLlantas6.setDisable(true);
+                panelLlantas8.setDisable(true);
+                panelLlantas10.setDisable(true);
+                panelLlantas12.setDisable(true);
+
+                break;
+            } case 3: {
+                panelLlantas2.setDisable(false);
+                panelLlantas4.setDisable(false);
+                panelLlantas6.setDisable(false);
+                panelLlantas8.setDisable(true);
+                panelLlantas10.setDisable(true);
+                panelLlantas12.setDisable(true);
+                break;
+            } case 4: {
+                panelLlantas2.setDisable(false);
+                panelLlantas4.setDisable(false);
+                panelLlantas6.setDisable(false);
+                panelLlantas8.setDisable(false);
+                panelLlantas10.setDisable(true);
+                panelLlantas12.setDisable(true);
+                break;
+            } case 5: {
+                panelLlantas2.setDisable(false);
+                panelLlantas4.setDisable(false);
+                panelLlantas6.setDisable(false);
+                panelLlantas8.setDisable(false);
+                panelLlantas10.setDisable(false);
+                panelLlantas12.setDisable(true);
+                break;
+            } case 6: {
+                panelLlantas2.setDisable(false);
+                panelLlantas4.setDisable(false);
+                panelLlantas6.setDisable(false);
+                panelLlantas8.setDisable(false);
+                panelLlantas10.setDisable(false);
+                panelLlantas12.setDisable(false);
+            }
+
+        }
 
     }
+
+
+
+
+    //SECCION RESULTADOS
+    @FXML
+    void irMenuPrincipal(ActionEvent event) {
+        this.menuPrincipalBoton.getScene().getWindow().hide();
+        Stage home = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/AppRevision/MenuPrincipal/MenuPrincipal.fxml"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        home.setResizable(false);
+        home.setScene(new Scene(root, 800, 600));
+        home.show();
+    }
+
 }
