@@ -40,14 +40,11 @@ public class Inspector implements Serializable {
         if(revisarIntensidadLuces(vehiculo, revision) && revisarEstadoLuces(vehiculo,revision)) {
             vehiculo.setEstadoLuces(true);
         }
-        else{
-            vehiculo.setEstadoLuces(false);
-        }
-
     }
     public boolean revisarIntensidadLuces(Vehiculo vehiculo, Revision revision) {
         Luz[] luces = vehiculo.getLuces();
         String intensidad;
+        int contadorLucesMalEstado = 0;
         boolean resultado = false;
         for (int i = 0; i < luces.length; i++) {
             intensidad = luces[i].getIntensidadLuz();
@@ -66,17 +63,20 @@ public class Inspector implements Serializable {
                         revision.setObservaciones("Intensidad de luces neblineras: deficiente");
                         break;
                 }
+                contadorLucesMalEstado++;
                 revision.aumentarError();
-            }else{
-                resultado = true;
             }
+        }
+        if(contadorLucesMalEstado == 0){
+            resultado = true;
         }
         return resultado;
     }
 
     public boolean revisarEstadoLuces(Vehiculo vehiculo, Revision revision) {
         Luz[] luces = vehiculo.getLuces();
-        boolean estado = false;
+        boolean estado;
+        boolean resultado = false;
         int contadorLucesQuemadas = 0;
         for (int i = 0; i < luces.length; i++) {
             estado = luces[i].getEstadoLuz();
@@ -85,12 +85,14 @@ public class Inspector implements Serializable {
             }
 
         }
+
         if(contadorLucesQuemadas >0){
             revision.setObservaciones("Existen luces quemadas");
             revision.aumentarError();
-            return false;
+        }else{
+            resultado = true;
         }
-        return true;
+        return resultado;
     }
 
     // Revisión del Chasis
