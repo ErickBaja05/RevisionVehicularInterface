@@ -60,7 +60,7 @@ public class RegistrosControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Set the cell value factories using lambdas to access nested properties
+        // Asignando las celdas de propiedades usando expresiones lambda para acceder a los datos anidados en la revisión
         placaColumna.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getRevisionPropietario().getVehiculoPropietario().getPlaca())
         );
@@ -85,7 +85,7 @@ public class RegistrosControlador implements Initializable {
             return new SimpleStringProperty(multaText);
         });
 
-        // Load data from file
+        // Leyendo los datos del archivo
         try {
             leerRevisiones();
         } catch (IOException e) {
@@ -94,10 +94,10 @@ public class RegistrosControlador implements Initializable {
             System.err.println("Clase no hallada");
         }
 
-        // Populate observable list
+        // Llenando la lista observable
         observableRevisiones.addAll(revisiones);
 
-        // Set items in TableView
+        // Asignando los elementos a la tabla
         tablaRevisiones.setItems(observableRevisiones);
 
         //Creando una FilteredList para englobar a la lista observable
@@ -117,17 +117,13 @@ public class RegistrosControlador implements Initializable {
         });
         //Englobando toda la informacion en una lista ordenada
         SortedList<Revision> datosOrdenados = new SortedList<>(filteredData);
-        //Ordenandoel TableView
+        //Ordenando el TableView
         datosOrdenados.comparatorProperty().bind(tablaRevisiones.comparatorProperty());
         tablaRevisiones.setItems(datosOrdenados);
 
 
     }
 
-    @FXML
-    void buscar(ActionEvent event) {
-        System.out.println("HOLA");
-    }
 
     @FXML
     void irMenuPrincipal(ActionEvent event) {
