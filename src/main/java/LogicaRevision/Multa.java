@@ -53,4 +53,7 @@ public class Multa implements Serializable {
         multa.append("Valor a Pagar: ").append(this.getCostoMulta()).append("\n");
         return multa.toString();
     }
+    public String mostrarCostoMulta(){
+        return String.format("$%.2f",this.costoMulta);
+    }
 }

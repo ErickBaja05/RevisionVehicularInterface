@@ -138,7 +138,7 @@ public class Inspector implements Serializable {
         }
         if ((temperaturaMotor >= 90 && temperaturaMotor <= 100)) {
             vehiculo.getMotor().setEstadoMotor("Bueno");
-        }else if ((temperaturaMotor >= 100 && temperaturaMotor <= 110)) {
+        }else if ((temperaturaMotor > 100 && temperaturaMotor <= 110)) {
             vehiculo.getMotor().setEstadoMotor("Regular");
         } else {
             vehiculo.getMotor().setEstadoMotor("Deficiente");
@@ -313,7 +313,7 @@ public class Inspector implements Serializable {
             vehiculo.getSistemaFrenos().setEstadoFrenos("Bueno");
             vehiculo.setEstadoFrenos(true);
             resultado = true;
-        } else if (estadoPastillas.equalsIgnoreCase("Aceptable") && calentamientoFrenos <= 350) {
+        } else if (estadoPastillas.equalsIgnoreCase("Aceptable") && calentamientoFrenos < 350) {
             vehiculo.getSistemaFrenos().setEstadoFrenos("Bueno");
             vehiculo.setEstadoFrenos(true);
             resultado = true;
