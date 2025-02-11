@@ -360,7 +360,7 @@ public class Inspector implements Serializable {
     }
 
     public void realizarRevision(Vehiculo vehiculo, Revision revision) {
-
+        revision.resetar();
         this.revisarEstadoChasis(vehiculo,revision);
         this.revisarEstadoFrenos(vehiculo,revision);
         this.revisarEstadoLlantas(vehiculo,revision);

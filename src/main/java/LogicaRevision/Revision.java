@@ -79,6 +79,11 @@ public class Revision implements Serializable {
         this.revisionCompletada = revisionCompletada;
     }
 
+    public void resetar(){
+        this.numeroErrores = 0;
+        this.observaciones = new StringBuilder();
+    }
+
     @Override
     public String toString() {
         return String.format("%s%n%s%n%s%n", this.numeroErrores >0? "NO APROBADO": "APROBADO", this.getRevisionPropietario(), this.getRevisionPropietario().getVehiculoPropietario());
