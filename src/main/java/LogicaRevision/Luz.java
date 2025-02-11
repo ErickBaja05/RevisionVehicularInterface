@@ -20,7 +20,12 @@ public class Luz {
     }
 
     public void setEstadoLuz(String estadoLuz) {
-        this.estadoLuz = !estadoLuz.equalsIgnoreCase("Quemadas");
+        if(estadoLuz == null){
+            throw new NullPointerException("Se debe escojer una opcion");
+        }else{
+            this.estadoLuz = !estadoLuz.equalsIgnoreCase("Quemadas");
+        }
+
 
     }
     public String getIntensidadLuz() {
@@ -28,7 +33,12 @@ public class Luz {
     }
 
     public void setIntensidadLuz(String intensidadLuz) {
-        this.intensidadLuz = intensidadLuz;
+        if(intensidadLuz == null){
+            throw new NullPointerException("Se debe escojer una opcion");
+        }else{
+            this.intensidadLuz = intensidadLuz;
+        }
+
     }
 
     public String getPasoLuz() {

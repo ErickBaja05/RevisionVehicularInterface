@@ -46,4 +46,5 @@ public class Motor {
     public void setFugaMotor(String fuga) {
         this.fugaMotor = fuga.equalsIgnoreCase("si");
     }
+
 }

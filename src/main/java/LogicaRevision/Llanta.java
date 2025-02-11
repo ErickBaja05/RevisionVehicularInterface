@@ -15,7 +15,7 @@ public class Llanta {
         return bandaRodadura;
     }
 
-    public void setBandaRodadura(String rodadura) throws Exception {
+    public void setBandaRodadura(String rodadura) throws NumberFormatException {
         double bandaRodaduraValor = 0.0;
                 bandaRodaduraValor = Double.parseDouble(rodadura);
         this.bandaRodadura = bandaRodaduraValor;
@@ -29,10 +29,16 @@ public class Llanta {
         double presionValor = 0.0;
         presionValor = Double.parseDouble(presionLlanta);
         this.presionLlanta = presionValor;
+
     }
 
     public void setEstadoLlanta(String estadoLlanta) {
-        this.estadoLlanta = estadoLlanta;
+        if(estadoLlanta == null){
+            throw new NullPointerException("Debe seleccionar una opcion ");
+        }else{
+            this.estadoLlanta = estadoLlanta;
+        }
+
     }
 
     public String getEstadoLlanta() {

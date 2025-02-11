@@ -6,21 +6,28 @@ public class VehiculoLiviano extends Vehiculo {
     private boolean cinturonSeguridad;
     private boolean kitPrimerosAuxilios;
 
-    public VehiculoLiviano(int carId, String color, String marca, String modelo, String placa, int nFrenos, int nLlantas, Propietario propietario, int anio, boolean llantaEmergencia, String tipoTransmision, boolean cinturonSeguridad, boolean kitPrimerosAuxilios) {
+    public VehiculoLiviano(int carId, String color, String marca, String modelo, String placa, int nFrenos, int nLlantas, Propietario propietario, int anio, String llantaEmergencia, String tipoTransmision, String cinturonSeguridad, String kitPrimerosAuxilios) {
         super(carId, color, marca, modelo, placa, nFrenos, nLlantas, propietario, anio);
-        this.llantaEmergencia = llantaEmergencia;
-        this.tipoTransmision = tipoTransmision;
-        this.cinturonSeguridad = cinturonSeguridad;
-        this.kitPrimerosAuxilios = kitPrimerosAuxilios;
+        this.llantaEmergencia = llantaEmergencia.equalsIgnoreCase("si");
+        this.cinturonSeguridad = cinturonSeguridad.equalsIgnoreCase("si");
+        this.kitPrimerosAuxilios = kitPrimerosAuxilios.equalsIgnoreCase("si");
+        if(tipoTransmision == null){
+            throw new NullPointerException("Debe seleccionar almenos una opcion");
+        }else{
+            this.tipoTransmision = tipoTransmision;
+        }
+
+
     }
     public VehiculoLiviano() {}
+
 
     public boolean isLlantaEmergencia() {
         return llantaEmergencia;
     }
 
-    public void setLlantaEmergencia(boolean llantaEmergencia) {
-        this.llantaEmergencia = llantaEmergencia;
+    public void setLlantaEmergencia(String llantaEmergencia) {
+        this.llantaEmergencia = llantaEmergencia.equalsIgnoreCase("si");
     }
 
     public String getTipoTransmision() {
@@ -35,15 +42,19 @@ public class VehiculoLiviano extends Vehiculo {
         return cinturonSeguridad;
     }
 
-    public void setCinturonSeguridad(boolean cinturonSeguridad) {
-        this.cinturonSeguridad = cinturonSeguridad;
+    public void setCinturonSeguridad(String cinturonSeguridad) {
+        this.cinturonSeguridad = cinturonSeguridad.equalsIgnoreCase("si");
     }
 
     public boolean isKitPrimerosAuxilios() {
         return kitPrimerosAuxilios;
     }
 
-    public void setKitPrimerosAuxilios(boolean kitPrimerosAuxilios) {
-        this.kitPrimerosAuxilios = kitPrimerosAuxilios;
+    public void setKitPrimerosAuxilios(String kitPrimerosAuxilios) {
+        this.kitPrimerosAuxilios = kitPrimerosAuxilios.equalsIgnoreCase("si");
+    }
+    @Override
+    public String toString() {
+        return String.format("%s%n%s", super.toString(),this.tipoTransmision);
     }
 }

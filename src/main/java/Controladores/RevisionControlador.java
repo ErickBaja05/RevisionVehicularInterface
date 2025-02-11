@@ -31,7 +31,7 @@ public class RevisionControlador implements Initializable {
     private final String[] tiposDeVehiculo ={"Liviano", "Pesado","Moto"};
     private final String[] estadosDeLuz = {"Ideal", "Aceptable", "Quemadas"};
     private final Integer[] posiblesEjes = {2,3,4,5,6};
-    private final String[] estadosGenerales = {"Ideal", "Aceptable", "Deficiente"};
+       private final String[] estadosGenerales = {"Ideal", "Aceptable", "Deficiente"};
     private final String[] tiposDeMotor ={"Electrico", "Gasolina", "Diesel"};
     private final String[] posibleCilindrajes = {"100", "200", "300", "400", "400+"};
     private final String[] posibleTransmision ={"Manual", "Automatico"};
@@ -75,7 +75,7 @@ public class RevisionControlador implements Initializable {
     private ComboBox<String> estadoLuzNeb;
 
     @FXML
-    private ComboBox<String> estadoLuzPar;
+    private ComboBox<String> estadoLuzDir;
 
     @FXML
     private ComboBox<String> estadoLuzTras;
@@ -129,7 +129,7 @@ public class RevisionControlador implements Initializable {
     private ComboBox<String> lumLuzNeb;
 
     @FXML
-    private ComboBox<String> lumLuzPar;
+    private ComboBox<String> lumLuzDir;
 
     @FXML
     private ComboBox<String> lumLuzTras;
@@ -217,6 +217,9 @@ public class RevisionControlador implements Initializable {
 
     @FXML
     private Tab datosAutoI;
+
+    @FXML
+    private Tab datosAuto2;
     //Varios
     @FXML
     private TextField marcaField;
@@ -264,10 +267,19 @@ public class RevisionControlador implements Initializable {
     @FXML
     private Button menuPrincipalBoton;
 
+    // Radio Button
+
+
+
+    // Botones
+
+    @FXML
+    private Button btnInfoAuto1;
+
 @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Agregando las opciones necesarias para las provincias
-        provinciasBox.getItems().addAll(provincias);
+
         //Agregando las opciones para el tipo de vehiculo
         tipoVehiculo.getItems().addAll(tiposDeVehiculo);
         //Agregando las opcion para el número de ejes
@@ -288,7 +300,7 @@ public class RevisionControlador implements Initializable {
         //Agregando las opciones de estados para las luces
         estadoLuzDel.getItems().addAll(estadosDeLuz);
         estadoLuzTras.getItems().addAll(estadosDeLuz);
-        estadoLuzPar.getItems().addAll(estadosDeLuz);
+        estadoLuzDir.getItems().addAll(estadosDeLuz);
         estadoLuzNeb.getItems().addAll(estadosDeLuz);
         //Agregando las opciones para el tipo de motor
         tipoMotor.getItems().addAll(tiposDeMotor);
@@ -296,12 +308,13 @@ public class RevisionControlador implements Initializable {
         //Agregando las opciones de luminosidad para las luces
         lumLuzDel.getItems().addAll(estadosGenerales);
         lumLuzTras.getItems().addAll(estadosGenerales);
-        lumLuzPar.getItems().addAll(estadosGenerales);
+        lumLuzDir.getItems().addAll(estadosGenerales);
         lumLuzNeb.getItems().addAll(estadosGenerales);
 
         //Agregando las opciones para elementos varios del vehiculo
         nCilindraje.getItems().addAll(posibleCilindrajes);
         tipoTransmision.getItems().addAll(posibleTransmision);
+        nEjes.setDisable(true);
     }
     //SECCION PROPIETARIO
 
@@ -310,13 +323,17 @@ public class RevisionControlador implements Initializable {
     @FXML
     void ingresarPropietario(ActionEvent event) {
         Message msgError = new Message();
+        Message msgInfor = new Message();
         try{
             propietarioVehiculo = new Propietario(cedulaField.getText(),nombreField.getText(),telefonoField.getText(),correoField.getText());
+            ManagerPropietario.setPropietario(propietarioVehiculo);
+            msgInfor.setMessage("Informacion guardada exitosamente");
             datosAutoI.setDisable(false);
         } catch (IllegalArgumentException e){
             msgError.setMessage("Algún valor ingresado como: cédula, teléfono, o correo es inválido.\nIntente nuevamente.");
 
         } catch (NullPointerException e){
+            e.printStackTrace();
             msgError.setMessage("Los campos del propietario no pueden dejarse vacíos");
         }
     }
@@ -329,6 +346,7 @@ public class RevisionControlador implements Initializable {
     }
     @FXML
     void elegirTipoVehiculo(ActionEvent event) {
+        btnInfoAuto1.setDisable(false);
         placaField.setDisable(false);
         String tipoVehiculoElegido = tipoVehiculo.getSelectionModel().getSelectedItem();
         if(tipoVehiculoElegido.equals("Moto")){
@@ -340,8 +358,9 @@ public class RevisionControlador implements Initializable {
             capCargaField.setDisable(true);
             panelAgregados.setDisable(true);
         } else if (tipoVehiculoElegido.equals("Liviano")){
-            nEjes.setDisable(false);
-            panelLlantas2.setDisable(true);
+            nEjes.setDisable(true);
+            panelLlantas2.setDisable(false);
+            panelLlantas4.setDisable(false);
             panelAgregados.setDisable(false);
             tipoTransmision.setDisable(false);
             //Deshabilitando campos innecesarios para el auto
@@ -350,6 +369,7 @@ public class RevisionControlador implements Initializable {
         } else if (tipoVehiculoElegido.equals("Pesado")){
             nEjes.setDisable(false);
             panelLlantas2.setDisable(true);
+            panelLlantas4.setDisable(true);
             panelAgregados.setDisable(false);
             capCargaField.setDisable(false);
             //Deshabilitando campos innecesarios para el Pesado
@@ -411,6 +431,8 @@ public class RevisionControlador implements Initializable {
 
 
 
+
+
     //SECCION RESULTADOS
     @FXML
     void irMenuPrincipal(ActionEvent event) {
@@ -428,4 +450,208 @@ public class RevisionControlador implements Initializable {
         home.show();
     }
 
+    @FXML
+    void guardarInfoAuto1(ActionEvent event) {
+        String tipoVehiculoElegido = tipoVehiculo.getSelectionModel().getSelectedItem();
+        String cilindrajeElegido = nCilindraje.getSelectionModel().getSelectedItem();
+        RadioButton tieneLlantaEmergencia = (RadioButton) LantasSeg.getSelectedToggle();
+        RadioButton tieneFugasMotor = (RadioButton) fugas.getSelectedToggle();
+        RadioButton tieneKit = (RadioButton) kitEmerg.getSelectedToggle();
+        RadioButton estadoCinturones = (RadioButton) Cinturon.getSelectedToggle();
+        Message msgError = new Message();
+        Message msgConfirmacion = new Message();
+        if(tipoVehiculoElegido.equals("Moto")){
+            try{
+                System.out.println(estadoLuzDel.getSelectionModel().getSelectedItem());
+                Moto motoUsuario = new Moto(1,colorField.getText(),marcaField.getText(),modeloField.getText(),placaField.getText(),2,2,ManagerPropietario.getPropietario(),2015,Integer.parseInt(cilindrajeElegido));
+                motoUsuario.getLlantas()[0].setEstadoLlanta(labrado1.getSelectionModel().getSelectedItem());
+                motoUsuario.getLlantas()[1].setEstadoLlanta(labrado2.getSelectionModel().getSelectedItem());
+                motoUsuario.getLlantas()[0].setPresionLlanta(presionField1.getText());
+                motoUsuario.getLlantas()[1].setPresionLlanta(presionField2.getText());
+                motoUsuario.getLuces()[0].setEstadoLuz(estadoLuzDel.getSelectionModel().getSelectedItem());
+                motoUsuario.getLuces()[0].setIntensidadLuz(lumLuzDel.getSelectionModel().getSelectedItem());
+                motoUsuario.getLuces()[1].setEstadoLuz(estadoLuzTras.getSelectionModel().getSelectedItem());
+                motoUsuario.getLuces()[1].setIntensidadLuz(lumLuzTras.getSelectionModel().getSelectedItem());
+                motoUsuario.getLuces()[2].setEstadoLuz(estadoLuzDir.getSelectionModel().getSelectedItem());
+                motoUsuario.getLuces()[2].setIntensidadLuz(lumLuzDir.getSelectionModel().getSelectedItem());
+                motoUsuario.getLuces()[3].setEstadoLuz(estadoLuzNeb.getSelectionModel().getSelectedItem());
+                motoUsuario.getLuces()[3].setIntensidadLuz(lumLuzNeb.getSelectionModel().getSelectedItem());
+                motoUsuario.getMotor().setTipoMotor(tipoMotor.getSelectionModel().getSelectedItem());
+                motoUsuario.getMotor().setTemperaturaMotor(tempMotField.getText());
+                motoUsuario.getMotor().setFugaMotor(tieneFugasMotor.getText());
+                ManagerPropietario.getPropietario().setVehiculoPropietario(motoUsuario);
+                msgConfirmacion.setMessage("Informacion guardada exitosamente");
+                datosAuto2.setDisable(false);
+            }catch (IllegalArgumentException e){
+                msgError.setMessage("Algun dato del vehiculo como la placa esta no es valido, revise nuevamente");
+
+            }catch (NullPointerException e){
+                msgError.setMessage("Debe llenar todos los datos para continuar");
+            }
+
+        }else if(tipoVehiculoElegido.equals("Liviano")){
+            try {
+                VehiculoLiviano vehiculoUsuario = new VehiculoLiviano(1,colorField.getText(),marcaField.getText(),modeloField.getText(),placaField.getText(),4,4,ManagerPropietario.getPropietario(),2015, tieneLlantaEmergencia.getText(),tipoTransmision.getValue(),estadoCinturones.getText(),tieneKit.getText());
+                vehiculoUsuario.getLlantas()[0].setEstadoLlanta(labrado1.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLlantas()[1].setEstadoLlanta(labrado2.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLlantas()[2].setEstadoLlanta(labrado3.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLlantas()[3].setEstadoLlanta(labrado4.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLlantas()[0].setPresionLlanta(presionField1.getText());
+                vehiculoUsuario.getLlantas()[1].setPresionLlanta(presionField2.getText());
+                vehiculoUsuario.getLlantas()[2].setPresionLlanta(presionField3.getText());
+                vehiculoUsuario.getLlantas()[3].setPresionLlanta(presionField4.getText());
+                vehiculoUsuario.getLuces()[0].setEstadoLuz(estadoLuzDel.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[0].setIntensidadLuz(lumLuzDel.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[1].setEstadoLuz(estadoLuzTras.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[1].setIntensidadLuz(lumLuzTras.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[2].setEstadoLuz(estadoLuzDir.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[2].setIntensidadLuz(lumLuzDir.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[3].setEstadoLuz(estadoLuzNeb.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[3].setIntensidadLuz(lumLuzNeb.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getMotor().setTipoMotor(tipoMotor.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getMotor().setTemperaturaMotor(tempMotField.getText());
+                vehiculoUsuario.getMotor().setFugaMotor(tieneFugasMotor.getText());
+                ManagerPropietario.getPropietario().setVehiculoPropietario(vehiculoUsuario);
+                datosAuto2.setDisable(false);
+                msgConfirmacion.setMessage("Informacion guardada exitosamente");
+            }catch (IllegalArgumentException e){
+                msgError.setMessage("Algun dato del vehiculo como la placa esta no es valido, revise nuevamente");
+            }catch (NullPointerException e){
+                e.printStackTrace();
+                msgError.setMessage("Debe llenar todos los datos para continuar");
+            }
+        }else{
+            try {
+                int ejesSeleccionados = nEjes.getSelectionModel().getSelectedItem();
+                VehiculoPesado vehiculoUsuario = null;
+                switch (ejesSeleccionados) {
+                    case 2:
+                        VehiculoPesado op1 = new VehiculoPesado(1,colorField.getText(),marcaField.getText(),modeloField.getText(),placaField.getText(),4,4,ManagerPropietario.getPropietario(),2015,Integer.parseInt(capCargaField.getText()),tieneLlantaEmergencia.getText(),estadoCinturones.getText(),tieneKit.getText());
+                        op1.getLlantas()[0].setEstadoLlanta(labrado1.getSelectionModel().getSelectedItem());
+                        op1.getLlantas()[1].setEstadoLlanta(labrado2.getSelectionModel().getSelectedItem());
+                        op1.getLlantas()[2].setEstadoLlanta(labrado3.getSelectionModel().getSelectedItem());
+                        op1.getLlantas()[3].setEstadoLlanta(labrado4.getSelectionModel().getSelectedItem());
+                        op1.getLlantas()[0].setPresionLlanta(presionField1.getText());
+                        op1.getLlantas()[1].setPresionLlanta(presionField2.getText());
+                        op1.getLlantas()[2].setPresionLlanta(presionField3.getText());
+                        op1.getLlantas()[3].setPresionLlanta(presionField4.getText());
+                        vehiculoUsuario = op1;
+                        break;
+                    case 3:
+                        VehiculoPesado op2 = new VehiculoPesado(1,colorField.getText(),marcaField.getText(),modeloField.getText(),placaField.getText(),6,6,ManagerPropietario.getPropietario(),2015,Integer.parseInt(capCargaField.getText()),tieneLlantaEmergencia.getText(),estadoCinturones.getText(),tieneKit.getText());
+                        op2.getLlantas()[0].setEstadoLlanta(labrado1.getSelectionModel().getSelectedItem());
+                        op2.getLlantas()[1].setEstadoLlanta(labrado2.getSelectionModel().getSelectedItem());
+                        op2.getLlantas()[2].setEstadoLlanta(labrado3.getSelectionModel().getSelectedItem());
+                        op2.getLlantas()[3].setEstadoLlanta(labrado4.getSelectionModel().getSelectedItem());
+                        op2.getLlantas()[4].setEstadoLlanta(labrado5.getSelectionModel().getSelectedItem());
+                        op2.getLlantas()[5].setEstadoLlanta(labrado6.getSelectionModel().getSelectedItem());
+                        op2.getLlantas()[0].setPresionLlanta(presionField1.getText());
+                        op2.getLlantas()[1].setPresionLlanta(presionField2.getText());
+                        op2.getLlantas()[2].setPresionLlanta(presionField3.getText());
+                        op2.getLlantas()[3].setPresionLlanta(presionField4.getText());
+                        op2.getLlantas()[4].setPresionLlanta(presionField5.getText());
+                        op2.getLlantas()[5].setPresionLlanta(presionField6.getText());
+                        vehiculoUsuario = op2;
+                        break;
+                    case 4:
+                        VehiculoPesado op3 = new VehiculoPesado(1,colorField.getText(),marcaField.getText(),modeloField.getText(),placaField.getText(),8,8,ManagerPropietario.getPropietario(),2015,Integer.parseInt(capCargaField.getText()),tieneLlantaEmergencia.getText(),estadoCinturones.getText(),tieneKit.getText());
+                        op3.getLlantas()[0].setEstadoLlanta(labrado1.getSelectionModel().getSelectedItem());
+                        op3.getLlantas()[1].setEstadoLlanta(labrado2.getSelectionModel().getSelectedItem());
+                        op3.getLlantas()[2].setEstadoLlanta(labrado3.getSelectionModel().getSelectedItem());
+                        op3.getLlantas()[3].setEstadoLlanta(labrado4.getSelectionModel().getSelectedItem());
+                        op3.getLlantas()[4].setEstadoLlanta(labrado5.getSelectionModel().getSelectedItem());
+                        op3.getLlantas()[5].setEstadoLlanta(labrado6.getSelectionModel().getSelectedItem());
+                        op3.getLlantas()[6].setEstadoLlanta(labrado7.getSelectionModel().getSelectedItem());
+                        op3.getLlantas()[7].setEstadoLlanta(labrado8.getSelectionModel().getSelectedItem());
+                        op3.getLlantas()[0].setPresionLlanta(presionField1.getText());
+                        op3.getLlantas()[1].setPresionLlanta(presionField2.getText());
+                        op3.getLlantas()[2].setPresionLlanta(presionField3.getText());
+                        op3.getLlantas()[3].setPresionLlanta(presionField4.getText());
+                        op3.getLlantas()[4].setPresionLlanta(presionField5.getText());
+                        op3.getLlantas()[5].setPresionLlanta(presionField6.getText());
+                        op3.getLlantas()[6].setPresionLlanta(presionField7.getText());
+                        op3.getLlantas()[7].setPresionLlanta(presionField8.getText());
+                        vehiculoUsuario = op3;
+                        break;
+                    case 5:
+                        VehiculoPesado op4 = new VehiculoPesado(1,colorField.getText(),marcaField.getText(),modeloField.getText(),placaField.getText(),10,10,ManagerPropietario.getPropietario(),2015,Integer.parseInt(capCargaField.getText()),tieneLlantaEmergencia.getText(),estadoCinturones.getText(),tieneKit.getText());
+                        op4.getLlantas()[0].setEstadoLlanta(labrado1.getSelectionModel().getSelectedItem());
+                        op4.getLlantas()[1].setEstadoLlanta(labrado2.getSelectionModel().getSelectedItem());
+                        op4.getLlantas()[2].setEstadoLlanta(labrado3.getSelectionModel().getSelectedItem());
+                        op4.getLlantas()[3].setEstadoLlanta(labrado4.getSelectionModel().getSelectedItem());
+                        op4.getLlantas()[4].setEstadoLlanta(labrado5.getSelectionModel().getSelectedItem());
+                        op4.getLlantas()[5].setEstadoLlanta(labrado6.getSelectionModel().getSelectedItem());
+                        op4.getLlantas()[6].setEstadoLlanta(labrado7.getSelectionModel().getSelectedItem());
+                        op4.getLlantas()[7].setEstadoLlanta(labrado8.getSelectionModel().getSelectedItem());
+                        op4.getLlantas()[8].setEstadoLlanta(labrado9.getSelectionModel().getSelectedItem());
+                        op4.getLlantas()[9].setEstadoLlanta(labrado10.getSelectionModel().getSelectedItem());
+                        op4.getLlantas()[0].setPresionLlanta(presionField1.getText());
+                        op4.getLlantas()[1].setPresionLlanta(presionField2.getText());
+                        op4.getLlantas()[2].setPresionLlanta(presionField3.getText());
+                        op4.getLlantas()[3].setPresionLlanta(presionField4.getText());
+                        op4.getLlantas()[4].setPresionLlanta(presionField5.getText());
+                        op4.getLlantas()[5].setPresionLlanta(presionField6.getText());
+                        op4.getLlantas()[6].setPresionLlanta(presionField7.getText());
+                        op4.getLlantas()[7].setPresionLlanta(presionField8.getText());
+                        op4.getLlantas()[8].setPresionLlanta(presionField9.getText());
+                        op4.getLlantas()[9].setPresionLlanta(presionField10.getText());
+                        vehiculoUsuario = op4;
+                        break;
+                    case 6:
+                        VehiculoPesado op5 = new VehiculoPesado(1,colorField.getText(),marcaField.getText(),modeloField.getText(),placaField.getText(),12,12,ManagerPropietario.getPropietario(),2015,Integer.parseInt(capCargaField.getText()),tieneLlantaEmergencia.getText(),estadoCinturones.getText(),tieneKit.getText());
+                        op5.getLlantas()[0].setEstadoLlanta(labrado1.getSelectionModel().getSelectedItem());
+                        op5.getLlantas()[1].setEstadoLlanta(labrado2.getSelectionModel().getSelectedItem());
+                        op5.getLlantas()[2].setEstadoLlanta(labrado3.getSelectionModel().getSelectedItem());
+                        op5.getLlantas()[3].setEstadoLlanta(labrado4.getSelectionModel().getSelectedItem());
+                        op5.getLlantas()[4].setEstadoLlanta(labrado5.getSelectionModel().getSelectedItem());
+                        op5.getLlantas()[5].setEstadoLlanta(labrado6.getSelectionModel().getSelectedItem());
+                        op5.getLlantas()[6].setEstadoLlanta(labrado7.getSelectionModel().getSelectedItem());
+                        op5.getLlantas()[7].setEstadoLlanta(labrado8.getSelectionModel().getSelectedItem());
+                        op5.getLlantas()[8].setEstadoLlanta(labrado9.getSelectionModel().getSelectedItem());
+                        op5.getLlantas()[9].setEstadoLlanta(labrado10.getSelectionModel().getSelectedItem());
+                        op5.getLlantas()[10].setEstadoLlanta(labrado11.getSelectionModel().getSelectedItem());
+                        op5.getLlantas()[11].setEstadoLlanta(labrado12.getSelectionModel().getSelectedItem());
+                        op5.getLlantas()[0].setPresionLlanta(presionField1.getText());
+                        op5.getLlantas()[1].setPresionLlanta(presionField2.getText());
+                        op5.getLlantas()[2].setPresionLlanta(presionField3.getText());
+                        op5.getLlantas()[3].setPresionLlanta(presionField4.getText());
+                        op5.getLlantas()[4].setPresionLlanta(presionField5.getText());
+                        op5.getLlantas()[5].setPresionLlanta(presionField6.getText());
+                        op5.getLlantas()[6].setPresionLlanta(presionField7.getText());
+                        op5.getLlantas()[7].setPresionLlanta(presionField8.getText());
+                        op5.getLlantas()[8].setPresionLlanta(presionField9.getText());
+                        op5.getLlantas()[9].setPresionLlanta(presionField10.getText());
+                        op5.getLlantas()[10].setPresionLlanta(presionField10.getText());
+                        op5.getLlantas()[11].setPresionLlanta(presionField11.getText());
+                        vehiculoUsuario = op5;
+                        break;
+                }
+                vehiculoUsuario.getLuces()[0].setEstadoLuz(estadoLuzDel.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[0].setIntensidadLuz(lumLuzDel.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[1].setEstadoLuz(estadoLuzTras.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[1].setIntensidadLuz(lumLuzTras.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[2].setEstadoLuz(estadoLuzDir.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[2].setIntensidadLuz(lumLuzDir.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[3].setEstadoLuz(estadoLuzNeb.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getLuces()[3].setIntensidadLuz(lumLuzNeb.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getMotor().setTipoMotor(tipoMotor.getSelectionModel().getSelectedItem());
+                vehiculoUsuario.getMotor().setTemperaturaMotor(tempMotField.getText());
+                vehiculoUsuario.getMotor().setFugaMotor(tieneFugasMotor.getText());
+                ManagerPropietario.getPropietario().setVehiculoPropietario(vehiculoUsuario);
+                datosAuto2.setDisable(false);
+                msgConfirmacion.setMessage("Informacion guardada exitosamente");
+            }catch (IllegalArgumentException e){
+                msgError.setMessage("Algun dato del vehiculo como la placa esta no es valido, revise nuevamente");
+            }catch (NullPointerException e){
+                e.printStackTrace();
+                msgError.setMessage("Debe llenar todos los datos para continuar");
+            }
+        }
+
+
+        System.out.println(ManagerPropietario.getPropietario());
+        System.out.println(ManagerPropietario.getPropietario().getVehiculoPropietario());
+
+
+    }
 }

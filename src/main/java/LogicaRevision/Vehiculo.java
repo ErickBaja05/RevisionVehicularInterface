@@ -22,15 +22,26 @@ public abstract class Vehiculo {
         this.color = color;
         this.marca = marca;
         this.modelo = modelo;
-        this.placa = placa;
+        if(verficarPlaca(placa)){
+            this.placa = placa;
+        } else {
+            throw new IllegalArgumentException("Placa Invalida");
+        }
         this.frenos = new Freno[nFrenos];
         this.motor = new Motor();
         this.llantas = new Llanta[nLlantas];
-        this.luces = new Luz[3]; // 0 DELANTERAS, 1 TRASERAS, 2 DIRECCIONALES
+        for(int i = 0; i < nLlantas; i++){
+            this.llantas[i] = new Llanta();
+        }
+        this.luces = new Luz[4]; // 0 DELANTERAS, 1 TRASERAS, 2 DIRECION, 3 NEBLINEROS
+        for(int i = 0; i < 4; i++){
+            this.luces[i] = new Luz();
+        }
         this.chasis = new Chasis();
         this.propietario = propietario;
         this.anio = anio;
         this.tuboEscape = new TuboEscape();
+
     }
     public Vehiculo() {}
 
@@ -149,5 +160,10 @@ public abstract class Vehiculo {
         Matcher coincidencia = patron.matcher(placa);
         return coincidencia.matches();
 
+    }
+
+    @Override
+    public String toString(){
+        return String.format("%s%n%s%n%s",this.marca, this.modelo, this.color);
     }
 }

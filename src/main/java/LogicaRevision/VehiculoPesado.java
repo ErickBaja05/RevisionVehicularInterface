@@ -6,14 +6,16 @@ public class VehiculoPesado extends Vehiculo{
     private boolean cinturonSeguridad;
     private boolean kitPrimerosAuxilios;
 
-    public VehiculoPesado(int carId, String color, String marca, String modelo, String placa, int nFrenos, int nLlantas, Propietario propietario, int anio, int capacidadCarga, boolean llantaEmergencia, boolean cinturonSeguridad, boolean kitPrimerosAuxilios) {
+    public VehiculoPesado(int carId, String color, String marca, String modelo, String placa, int nFrenos, int nLlantas, Propietario propietario, int anio, int capacidadCarga, String llantaEmergencia, String cinturonSeguridad, String kitPrimerosAuxilios) {
         super(carId, color, marca, modelo, placa, nFrenos, nLlantas, propietario, anio);
         this.capacidadCarga = capacidadCarga;
-        this.llantaEmergencia = llantaEmergencia;
-        this.cinturonSeguridad = cinturonSeguridad;
-        this.kitPrimerosAuxilios = kitPrimerosAuxilios;
+        this.llantaEmergencia = llantaEmergencia.equalsIgnoreCase("si");
+        this.cinturonSeguridad = cinturonSeguridad.equalsIgnoreCase("si");
+        this.kitPrimerosAuxilios = kitPrimerosAuxilios.equalsIgnoreCase("si");
     }
     public VehiculoPesado() {}
+
+
 
     public int getCapacidadCarga() {
         return capacidadCarga;
