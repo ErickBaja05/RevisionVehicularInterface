@@ -1,24 +1,28 @@
 package LogicaRevision;
 
-public class Llanta {
+import java.io.Serializable;
 
-    private double bandaRodadura;
+public class Llanta implements Serializable {
+
+    private String bandaRodadura;
     private double presionLlanta;
     private String estadoLlanta;
 
     public Llanta() {
-        this.bandaRodadura = 0;
+        this.bandaRodadura = "";
         this.presionLlanta = 0;
     }
 
-    public double getBandaRodadura() {
+    public String getBandaRodadura() {
         return bandaRodadura;
     }
 
-    public void setBandaRodadura(String rodadura) throws NumberFormatException {
-        double bandaRodaduraValor = 0.0;
-                bandaRodaduraValor = Double.parseDouble(rodadura);
-        this.bandaRodadura = bandaRodaduraValor;
+    public void setBandaRodadura(String rodadura) throws IllegalArgumentException {
+        if(rodadura == null){
+            throw new IllegalArgumentException("Llanta rodadura nula");
+        }else{
+            this.bandaRodadura = rodadura;
+        }
     }
 
     public double getPresionLlanta() {

@@ -1,13 +1,15 @@
 package LogicaRevision;
+import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-public class Propietario {
+public class Propietario implements Serializable {
 
     private String idPropietario;
     private String nombrePropietario;
     private String telefonoPropietario;
     private String correoPropietario;
     private Vehiculo vehiculoPropietario;
+    private Multa multaNoPasar = null;
 
     public Propietario(String idPropietario, String nombrePropietario, String telefonoPropietario, String correoPropietario) throws NullPointerException{
         if((idPropietario!= null && !idPropietario.isEmpty()) && (nombrePropietario != null && !nombrePropietario.isEmpty()) && (telefonoPropietario != null && !telefonoPropietario.isEmpty()) && (correoPropietario != null && !correoPropietario.isEmpty()) ) {
@@ -128,6 +130,14 @@ public class Propietario {
         Pattern patron = Pattern.compile(regex);
         Matcher coincidencia = patron.matcher(telefono);
         return coincidencia.matches();
+    }
+
+    public Multa getMultaNoPasar() {
+        return multaNoPasar;
+    }
+
+    public void setMultaNoPasar(Multa multaNoPasar) {
+        this.multaNoPasar = multaNoPasar;
     }
 
     @Override

@@ -1,14 +1,15 @@
 package LogicaRevision;
+import java.io.Serializable;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public abstract class Vehiculo {
+public abstract class Vehiculo implements Serializable {
     private int carId;
     protected String color;
     protected String marca;
     protected String modelo;
     protected String placa;
-    protected Freno[] frenos;
+    protected Freno sistemaFrenos;
     protected Motor motor;
     protected Llanta[] llantas;
     protected Luz [] luces;
@@ -16,6 +17,13 @@ public abstract class Vehiculo {
     protected Propietario propietario;
     protected int anio;
     protected TuboEscape tuboEscape;
+    protected boolean estadoLuces = false;
+    protected boolean estadoMotor= false;
+    protected boolean estadoLlantas= true;
+    protected boolean estadoChasis= true;
+    protected boolean estadoFrenos= false;
+    protected boolean estadoTuboEscape= false;
+    protected boolean estadoAdicionales = false;
 
     public Vehiculo(int carId, String color, String marca, String modelo, String placa, int nFrenos, int nLlantas, Propietario propietario, int anio) {
         this.carId = carId;
@@ -27,7 +35,7 @@ public abstract class Vehiculo {
         } else {
             throw new IllegalArgumentException("Placa Invalida");
         }
-        this.frenos = new Freno[nFrenos];
+        this.sistemaFrenos = new Freno();
         this.motor = new Motor();
         this.llantas = new Llanta[nLlantas];
         for(int i = 0; i < nLlantas; i++){
@@ -89,12 +97,12 @@ public abstract class Vehiculo {
         }
     }
 
-    public Freno[] getFrenos() {
-        return frenos;
+    public Freno getSistemaFrenos() {
+        return this.sistemaFrenos;
     }
 
-    public void setFrenos(Freno[] frenos) {
-        this.frenos = frenos;
+    public void setFrenos(Freno frenos) {
+        this.sistemaFrenos = frenos;
     }
 
     public Motor getMotor() {
@@ -164,6 +172,66 @@ public abstract class Vehiculo {
 
     @Override
     public String toString(){
-        return String.format("%s%n%s%n%s",this.marca, this.modelo, this.color);
+        return String.format("%s%n%s%n%s%n%s",this.marca, this.modelo, this.color,this.placa);
+    }
+
+    public void setSistemaFrenos(Freno sistemaFrenos) {
+        this.sistemaFrenos = sistemaFrenos;
+    }
+
+    public boolean isEstadoLuces() {
+        return estadoLuces;
+    }
+
+    public void setEstadoLuces(boolean estadoLuces) {
+        this.estadoLuces = estadoLuces;
+    }
+
+    public boolean isEstadoMotor() {
+        return estadoMotor;
+    }
+
+    public void setEstadoMotor(boolean estadoMotor) {
+        this.estadoMotor = estadoMotor;
+    }
+
+    public boolean isEstadoLlantas() {
+        return estadoLlantas;
+    }
+
+    public void setEstadoLlantas(boolean estadoLlantas) {
+        this.estadoLlantas = estadoLlantas;
+    }
+
+    public boolean isEstadoChasis() {
+        return estadoChasis;
+    }
+
+    public void setEstadoChasis(boolean estadoChasis) {
+        this.estadoChasis = estadoChasis;
+    }
+
+    public boolean isEstadoFrenos() {
+        return estadoFrenos;
+    }
+
+    public void setEstadoFrenos(boolean estadoFrenos) {
+        this.estadoFrenos = estadoFrenos;
+    }
+
+    public boolean isEstadoTuboEscape() {
+        return estadoTuboEscape;
+    }
+
+    public void setEstadoTuboEscape(boolean estadoTuboEscape) {
+        this.estadoTuboEscape = estadoTuboEscape;
+    }
+
+    public boolean isEstadoAdicionales() {
+        return estadoAdicionales;
+    }
+
+    public void setEstadoAdicionales(boolean estadoAdicionales) {
+        this.estadoAdicionales = estadoAdicionales;
     }
 }

@@ -1,6 +1,8 @@
 package LogicaRevision;
 
-public class Luz {
+import java.io.Serializable;
+
+public class Luz implements Serializable {
 
     private boolean estadoLuz;
     private String intensidadLuz;

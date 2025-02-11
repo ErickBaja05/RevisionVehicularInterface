@@ -5,7 +5,7 @@ public class VehiculoPesado extends Vehiculo{
     private boolean llantaEmergencia;
     private boolean cinturonSeguridad;
     private boolean kitPrimerosAuxilios;
-
+    private boolean tieneAgregados;
     public VehiculoPesado(int carId, String color, String marca, String modelo, String placa, int nFrenos, int nLlantas, Propietario propietario, int anio, int capacidadCarga, String llantaEmergencia, String cinturonSeguridad, String kitPrimerosAuxilios) {
         super(carId, color, marca, modelo, placa, nFrenos, nLlantas, propietario, anio);
         this.capacidadCarga = capacidadCarga;
@@ -47,5 +47,13 @@ public class VehiculoPesado extends Vehiculo{
 
     public void setKitPrimerosAuxilios(boolean kitPrimerosAuxilios) {
         this.kitPrimerosAuxilios = kitPrimerosAuxilios;
+    }
+
+    public boolean isTieneAgregados() {
+        return tieneAgregados;
+    }
+
+    public void setTieneAgregados(boolean tieneAgregados) {
+        this.tieneAgregados = tieneAgregados;
     }
 }

@@ -69,8 +69,8 @@
                               <Pane layoutX="-14.0" layoutY="1.0" prefHeight="623.0" prefWidth="1202.0">
                                  <children>
                                     <Label layoutX="22.0" layoutY="77.0" text="Tipo de Vehículo" />
-                                    <Label layoutX="23.0" layoutY="260.0" prefHeight="17.0" prefWidth="55.0" text="Placa" />
-                                    <TextField fx:id="placaField" disable="true" layoutX="70.0" layoutY="256.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese la placa" />
+                                    <Label layoutX="23.0" layoutY="233.0" prefHeight="17.0" prefWidth="55.0" text="Placa" />
+                                    <TextField fx:id="placaField" disable="true" layoutX="71.0" layoutY="221.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese la placa" />
                                     <Pane id="Motor" layoutX="335.0" layoutY="324.0" prefHeight="273.0" prefWidth="245.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
                                        <children>
                                           <Text layoutX="102.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Motor">
@@ -233,17 +233,19 @@
                                        </font>
                                     </Text>
                                     <Label layoutX="27.0" layoutY="122.0" prefHeight="17.0" prefWidth="46.0" text="Marca" />
-                                    <Label layoutX="20.0" layoutY="167.0" prefHeight="17.0" prefWidth="46.0" text="Modelo" />
-                                    <Label layoutX="24.0" layoutY="213.0" prefHeight="17.0" prefWidth="97.0" text="Color" />
+                                    <Label layoutX="19.0" layoutY="159.0" prefHeight="17.0" prefWidth="46.0" text="Modelo" />
+                                    <Label layoutX="25.0" layoutY="194.0" prefHeight="17.0" prefWidth="97.0" text="Color" />
                                     <TextField fx:id="marcaField" layoutX="70.0" layoutY="118.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese la marca" />
-                                    <TextField fx:id="modeloField" layoutX="70.0" layoutY="163.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese el modelo" />
-                                    <TextField fx:id="colorField" layoutX="70.0" layoutY="209.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese el color" />
+                                    <TextField fx:id="modeloField" layoutX="71.0" layoutY="155.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese el modelo" />
+                                    <TextField fx:id="colorField" layoutX="71.0" layoutY="190.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese el color" />
                                     <Label layoutX="25.0" layoutY="375.0" prefHeight="17.0" prefWidth="97.0" text="Cilindraje" />
                                     <ComboBox fx:id="nCilindraje" disable="true" layoutX="113.0" layoutY="362.0" prefHeight="21.0" prefWidth="148.0" promptText="Elija el Cilindraje" style="-fx-background-color: white;" />
                                     <Label layoutX="25.0" layoutY="416.0" prefHeight="17.0" prefWidth="97.0" text="Transimision" />
                                     <ComboBox fx:id="tipoTransmision" disable="true" layoutX="113.0" layoutY="411.0" prefHeight="27.0" prefWidth="148.0" promptText="Elija la transimisión" style="-fx-background-color: white;" />
                                     <Label layoutX="25.0" layoutY="464.0" prefHeight="17.0" prefWidth="97.0" text="Cap. de Carga" />
                                     <TextField fx:id="capCargaField" layoutX="113.0" layoutY="460.0" prefHeight="25.0" prefWidth="165.0" promptText="Ingrese Capacidad de Carga" />
+                                    <Label layoutX="23.0" layoutY="263.0" prefHeight="17.0" prefWidth="55.0" text="Año" />
+                                    <TextField fx:id="anioField" layoutX="71.0" layoutY="259.0" prefHeight="25.0" prefWidth="199.0" promptText="Ingrese el año" />
                                  </children>
                               </Pane>
                            </children></Pane>
@@ -310,7 +312,7 @@
                                           <TextField fx:id="tempFrenoField" layoutX="58.0" layoutY="75.0" prefHeight="25.0" prefWidth="102.0" promptText="Temperatura" />
                                        </children>
                                     </Pane>
-                                    <Pane id="Motor" layoutX="806.0" layoutY="159.0" prefHeight="245.0" prefWidth="208.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
+                                    <Pane id="Motor" fx:id="paneTuboEscape" layoutX="806.0" layoutY="159.0" prefHeight="245.0" prefWidth="208.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
                                        <children>
                                           <Text layoutX="57.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tubo de Escape">
                                              <font>
@@ -321,7 +323,7 @@
                                           <TextField fx:id="emisionField" layoutX="58.0" layoutY="110.0" prefHeight="25.0" prefWidth="102.0" promptText="Emisiones" />
                                        </children>
                                     </Pane>
-                                    <Button fx:id="escrituraInfo" layoutX="396.0" layoutY="449.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="418.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Guardar Información" textAlignment="CENTER" wrapText="true" />
+                                    <Button fx:id="btnInfoAuto2" layoutX="396.0" layoutY="449.0" mnemonicParsing="false" onAction="#guardarInfoAuto2" prefHeight="70.0" prefWidth="418.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Guardar Informacion y Comenzar Proceso" textAlignment="CENTER" wrapText="true" />
                                     <Text layoutX="292.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese los Datos del Vehículo" textAlignment="CENTER" wrappingWidth="634.626953125">
                                        <font>
                                           <Font name="Calibri" size="30.0" />
@@ -335,7 +337,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab closable="false" disable="true" text="Resultado de la Revisión">
+            <Tab fx:id="resultadosRevision" closable="false" disable="true" text="Resultado de la Revisión">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -355,7 +357,7 @@
                                                 <Font size="18.0" />
                                              </font>
                                           </Text>
-                                          <Text layoutX="43.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehiculo:" wrappingWidth="80.4482421875">
+                                          <Text layoutX="43.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modelo:" wrappingWidth="80.4482421875">
                                              <font>
                                                 <Font size="18.0" />
                                              </font>
@@ -473,7 +475,7 @@
                                     </Pane>
                                     <Pane id="Motor" layoutX="824.0" layoutY="127.0" prefHeight="455.0" prefWidth="355.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
                                        <children>
-                                          <Button fx:id="resultadosBoton" layoutX="105.0" layoutY="294.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="164.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Obtener resultados" textAlignment="CENTER" wrapText="true" />
+                                          <Button fx:id="resultadosBoton" layoutX="105.0" layoutY="294.0" mnemonicParsing="false" onAction="#mostrarResultados" prefHeight="42.0" prefWidth="164.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Obtener resultados" textAlignment="CENTER" wrapText="true" />
                                           <Button fx:id="menuPrincipalBoton" layoutX="105.0" layoutY="352.0" mnemonicParsing="false" onAction="#irMenuPrincipal" prefHeight="42.0" prefWidth="164.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Volver al Menu Principal" textAlignment="CENTER" wrapText="true" />
                                           <ImageView fitHeight="156.0" fitWidth="156.0" layoutX="109.0" layoutY="59.0">
                                              <image>

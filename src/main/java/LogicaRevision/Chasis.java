@@ -1,39 +1,41 @@
 package LogicaRevision;
 
-public class Chasis {
+import java.io.Serializable;
 
-    private int corrosionChasis;
-    private int alineacionChasis;
-    private int suspensionChasis;
+public class Chasis implements Serializable {
+
+    private String corrosionChasis;
+    private String alineacionChasis;
+    private String suspensionChasis;
     private boolean estadoChasis;
 
     public Chasis(){
-        this.corrosionChasis = 0;
-        this.alineacionChasis = 0;
-        this.suspensionChasis = 0;
+        this.corrosionChasis = "";
+        this.alineacionChasis = "";
+        this.suspensionChasis = "";
     }
 
-    public int getCorrosionChasis() {
+    public String getCorrosionChasis() {
         return corrosionChasis;
     }
 
-    public void setCorrosionChasis(int corrosionChasis) {
+    public void setCorrosionChasis(String corrosionChasis) {
         this.corrosionChasis = corrosionChasis;
     }
 
-    public int getAlineacionChasis() {
+    public String getAlineacionChasis() {
         return alineacionChasis;
     }
 
-    public void setAlineacionChasis(int alineacionChasis) {
+    public void setAlineacionChasis(String alineacionChasis) {
         this.alineacionChasis = alineacionChasis;
     }
 
-    public int getSuspensionChasis() {
+    public String getSuspensionChasis() {
         return suspensionChasis;
     }
 
-    public void setSuspensionChasis(int suspensionChasis) {
+    public void setSuspensionChasis(String suspensionChasis) {
         this.suspensionChasis = suspensionChasis;
     }
 
@@ -41,7 +43,7 @@ public class Chasis {
         return estadoChasis;
     }
 
-    public void setEstadoChasis(String estadoChasis) {
-        this.estadoChasis = !estadoChasis.equals("Malo");
+    public void setEstadoChasis(boolean estadoChasis) {
+        this.estadoChasis = estadoChasis;
     }
 }

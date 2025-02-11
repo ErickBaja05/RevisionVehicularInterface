@@ -1,36 +1,38 @@
 package LogicaRevision;
 
-public class Freno {
+import java.io.Serializable;
 
-    private int calentaminetoFrenos;
-    private int estadoPastillas;
+public class Freno implements Serializable {
+
+    private double calentaminetoFrenos;
+    private String estadoPastillas;
     private boolean estadoFrenos;
 
     public Freno(){
         this.calentaminetoFrenos = 0;
-        this.estadoPastillas = 0;
+        this.estadoPastillas = "";
         this.estadoFrenos = false;
     }
 
-    public Freno(int calentaminetoFrenos, int estadoPastillas){
+    public Freno(int calentaminetoFrenos, String estadoPastillas){
         this.calentaminetoFrenos = calentaminetoFrenos;
         this.estadoPastillas = estadoPastillas;
         this.estadoFrenos = false;
     }
 
-    public int getCalentaminetoFrenos() {
+    public double getCalentaminetoFrenos() {
         return calentaminetoFrenos;
     }
 
-    public void setCalentaminetoFrenos(int calentaminetoFrenos) {
+    public void setCalentaminetoFrenos(double calentaminetoFrenos) {
         this.calentaminetoFrenos = calentaminetoFrenos;
     }
 
-    public int getEstadoPastillas() {
+    public String getEstadoPastillas() {
         return estadoPastillas;
     }
 
-    public void setEstadoPastillas(int estadoPastillas) {
+    public void setEstadoPastillas(String estadoPastillas) {
         this.estadoPastillas = estadoPastillas;
     }
 

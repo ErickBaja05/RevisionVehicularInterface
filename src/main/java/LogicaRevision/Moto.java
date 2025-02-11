@@ -1,13 +1,15 @@
 package LogicaRevision;
 
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Moto extends Vehiculo {
+public class Moto extends Vehiculo  {
     private int cilindraje;
 
     public Moto(int carId, String color, String marca, String modelo, String placa, int nFrenos, int nLlantas, Propietario propietario, int anio, int cilindraje) {
         super(carId, color, marca, modelo, placa, nFrenos, nLlantas, propietario, anio);
+        this.setEstadoAdicionales(true);
 
     }
     public Moto() {}
@@ -24,7 +26,6 @@ public class Moto extends Vehiculo {
         Pattern patron = Pattern.compile(regex);
         Matcher coincidencia = patron.matcher(placa);
         return coincidencia.matches();
-
     }
 }
 

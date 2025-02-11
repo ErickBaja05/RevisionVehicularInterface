@@ -1,6 +1,8 @@
 package LogicaRevision;
 
-public class Motor {
+import java.io.Serializable;
+
+public class Motor implements Serializable {
     private String tipoMotor;
     private double temperaturaMotor;
     private boolean fugaMotor;

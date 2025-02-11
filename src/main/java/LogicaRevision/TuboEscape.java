@@ -1,6 +1,8 @@
 package LogicaRevision;
 
-public class TuboEscape {
+import java.io.Serializable;
+
+public class TuboEscape implements Serializable {
 
     private double valorEmisionGas;
     private boolean estadoTuboEscape;

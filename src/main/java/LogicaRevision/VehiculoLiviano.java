@@ -5,6 +5,7 @@ public class VehiculoLiviano extends Vehiculo {
     private String tipoTransmision;
     private boolean cinturonSeguridad;
     private boolean kitPrimerosAuxilios;
+    private boolean tieneAgregados;
 
     public VehiculoLiviano(int carId, String color, String marca, String modelo, String placa, int nFrenos, int nLlantas, Propietario propietario, int anio, String llantaEmergencia, String tipoTransmision, String cinturonSeguridad, String kitPrimerosAuxilios) {
         super(carId, color, marca, modelo, placa, nFrenos, nLlantas, propietario, anio);
@@ -52,6 +53,13 @@ public class VehiculoLiviano extends Vehiculo {
 
     public void setKitPrimerosAuxilios(String kitPrimerosAuxilios) {
         this.kitPrimerosAuxilios = kitPrimerosAuxilios.equalsIgnoreCase("si");
+    }
+    public boolean isTieneAgregados() {
+        return tieneAgregados;
+    }
+
+    public void setTieneAgregados(boolean tieneAgregados) {
+        this.tieneAgregados = tieneAgregados;
     }
     @Override
     public String toString() {

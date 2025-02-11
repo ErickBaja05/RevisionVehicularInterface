@@ -48,9 +48,9 @@ public class LoginControlador {
             home.setResizable(false);
             home.setScene(new Scene(root, 800, 600));
             home.show();
-            msg.setMessage("Ingreso Correcto, ¡Bienvenido!");
+            msg.setMessage("Ingreso Correcto, ¡Bienvenido!","Login Exitoso","Login Exitoso");
         } else {
-            msg.setMessage("Credenciales Incorrectas, intente nuevamente");
+            msg.setErrorMessage("Credenciales Incorrectas, intente nuevamente","Login Fallido", "Login Fallido");
         }
 
     }
