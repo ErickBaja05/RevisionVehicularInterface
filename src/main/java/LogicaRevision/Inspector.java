@@ -299,9 +299,37 @@ public class Inspector implements Serializable {
     }
 
     public void revisarEstadoFrenos(Vehiculo vehiculo, Revision revision) {
-        System.out.println("REVISANDO FRENOS");
-        vehiculo.setEstadoFrenos(true);
-    }
+
+        boolean resultado = false;
+        double calentamientoFrenos = vehiculo.getSistemaFrenos().getCalentaminetoFrenos();
+        String estadoPastillas = vehiculo.getSistemaFrenos().getEstadoPastillas();
+
+        if (estadoPastillas.equalsIgnoreCase("Ideal") && calentamientoFrenos <= 350){
+
+            vehiculo.getSistemaFrenos().setEstadoFrenos("Bueno");
+            vehiculo.setEstadoFrenos(true);
+            resultado = true;
+        } else if (estadoPastillas.equalsIgnoreCase("Aceptable") && calentamientoFrenos <= 350) {
+            vehiculo.getSistemaFrenos().setEstadoFrenos("Bueno");
+            vehiculo.setEstadoFrenos(true);
+            resultado = true;
+        } else {
+            vehiculo.getSistemaFrenos().setEstadoFrenos("Deficiente");
+        }
+
+        if (estadoPastillas.equalsIgnoreCase("Deficiente")){
+            vehiculo.setEstadoFrenos(false);
+            revision.setObservaciones("Pastillas Deficientes");
+        }
+        if (calentamientoFrenos > 350) {
+            vehiculo.setEstadoFrenos(false);
+            revision.setObservaciones("Sobrecalentamiento de Frenos");
+        }
+
+        if (!resultado) {
+            revision.aumentarError();
+        }
+}
 
     public boolean revisarAgregadosLiviano(VehiculoLiviano vehiculo) {
         return vehiculo.isCinturonSeguridad() && vehiculo.isKitPrimerosAuxilios() && vehiculo.isLlantaEmergencia();

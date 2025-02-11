@@ -698,6 +698,7 @@ public class RevisionControlador implements Initializable {
             }catch (IllegalArgumentException e){
                 msgError.setErrorMessage("Algun dato del vehiculo como la placa esta no es valido, revise nuevamente","Informacion Vehiculo", "Datos erroneos");
             }catch (NullPointerException e){
+                e.printStackTrace();
                 msgError.setErrorMessage("Debe llenar todos los datos para continuar", "Informacion Vehiculo", "Datos vacios");
             }
         }
