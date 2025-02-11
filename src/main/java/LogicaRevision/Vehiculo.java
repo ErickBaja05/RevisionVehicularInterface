@@ -234,4 +234,14 @@ public abstract class Vehiculo implements Serializable {
     public void setEstadoAdicionales(boolean estadoAdicionales) {
         this.estadoAdicionales = estadoAdicionales;
     }
+
+    public void resetear(){
+        this.estadoLuces = false;
+        this.estadoMotor= false;
+        this.estadoLlantas= true;
+        this.estadoChasis= true;
+        this.estadoFrenos= false;
+        this.estadoTuboEscape= false;
+        this.estadoAdicionales = false;
+    }
 }

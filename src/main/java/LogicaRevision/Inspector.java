@@ -189,16 +189,20 @@ public class Inspector implements Serializable {
                 break;
             case "Diesel":
                 if (anio <= 1989 && valorEmisionGas <= 2.5) {
+                    vehiculo.setEstadoTuboEscape(true);
                     vehiculo.getTuboEscape().setEstadoTuboEscape("Bueno");
                     result = true;
                 } else if (anio > 1989 && anio <= 1999 && valorEmisionGas <= 1) {
+                    vehiculo.setEstadoTuboEscape(true);
                     vehiculo.getTuboEscape().setEstadoTuboEscape("Bueno");
                 } else if (anio > 1999 && valorEmisionGas <= 0.5) {
+                    vehiculo.setEstadoTuboEscape(true);
                     vehiculo.getTuboEscape().setEstadoTuboEscape("Bueno");
                     result = true;
                 }
                 else {
                     vehiculo.getTuboEscape().setEstadoTuboEscape("Deficiente");
+
                 }
         }
         if (!result) {
@@ -361,6 +365,8 @@ public class Inspector implements Serializable {
 
     public void realizarRevision(Vehiculo vehiculo, Revision revision) {
         revision.resetar();
+        vehiculo.resetear();
+        revision.getRevisionPropietario().resetear();
         this.revisarEstadoChasis(vehiculo,revision);
         this.revisarEstadoFrenos(vehiculo,revision);
         this.revisarEstadoLlantas(vehiculo,revision);

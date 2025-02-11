@@ -140,6 +140,10 @@ public class Propietario implements Serializable {
         this.multaNoPasar = multaNoPasar;
     }
 
+    public void resetear(){
+        this.multaNoPasar = null;
+    }
+
     @Override
     public String toString(){
         return String.format("%s%n%s%n%s%n%s%n",this.idPropietario,this.nombrePropietario,this.telefonoPropietario,this.correoPropietario);
