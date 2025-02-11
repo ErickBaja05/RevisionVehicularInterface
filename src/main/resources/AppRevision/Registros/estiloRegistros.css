@@ -48,6 +48,9 @@
 #table .right {
     -fx-alignment: center-right;
 }
+.table-cell {
+    -fx-text-fill: black;
+}
 
 .cargarBotones {
     -fx-background-radius: 5;

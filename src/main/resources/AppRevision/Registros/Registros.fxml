@@ -21,13 +21,13 @@
       </ImageView>
       <Pane id="backPane" layoutX="33.0" layoutY="50.0" prefHeight="509.0" prefWidth="759.0" stylesheets="@estiloRegistros.css">
          <children>
-            <TableView id="tabla" layoutX="10.0" layoutY="147.0" prefHeight="270.0" prefWidth="741.0" stylesheets="@estiloRegistros.css">
+            <TableView id="tabla" fx:id="tablaRevisiones" layoutX="10.0" layoutY="147.0" prefHeight="270.0" prefWidth="741.0" stylesheets="@estiloRegistros.css">
               <columns>
-                <TableColumn prefWidth="75.0" text="Placa" />
-                <TableColumn prefWidth="142.0" text="Dueño" />
-                  <TableColumn prefWidth="131.0" text="Aprobación" />
-                  <TableColumn prefWidth="268.0" text="Observaciones" />
-                  <TableColumn prefWidth="112.0" text="Multa" />
+                <TableColumn fx:id="placaColumna" prefWidth="75.0" text="Placa" />
+                <TableColumn fx:id="propietarioColumna" prefWidth="122.0" text="Cédula del Propietario" />
+                  <TableColumn fx:id="aproboColumna" prefWidth="151.0" text="Aprobación" />
+                  <TableColumn fx:id="observacionesColumna" prefWidth="264.0" text="Observaciones" />
+                  <TableColumn fx:id="multaColumna" prefWidth="116.0" text="Multa" />
               </columns>
             </TableView>
             <Text layoutX="175.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resultados de la Revisión" wrappingWidth="411.9609375">
@@ -35,10 +35,9 @@
                   <Font name="Calibri" size="40.0" />
                </font>
             </Text>
-            <Button id="cargarBoton" fx:id="cargarResultados" layoutX="160.0" layoutY="431.0" mnemonicParsing="false" onAction="#cargarArchivo" prefHeight="42.0" prefWidth="164.0" styleClass="cargarBotones" stylesheets="@estiloRegistros.css" text="Cargar Resultados" />
-            <TextField fx:id="buscar" disable="true" layoutX="137.0" layoutY="97.0" onAction="#buscar" prefHeight="25.0" prefWidth="575.0" promptText="Ingrese el número de placa" />
+            <TextField fx:id="buscarField" layoutX="137.0" layoutY="97.0" onAction="#buscar" prefHeight="25.0" prefWidth="575.0" promptText="Ingrese el número de placa" />
             <Label layoutX="36.0" layoutY="101.0" text="Buscar Vehículo:" />
-            <Button fx:id="menuPrincipalBoton" layoutX="441.0" layoutY="431.0" mnemonicParsing="false" onAction="#irMenuPrincipal" prefHeight="42.0" prefWidth="164.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Volver al Menu Principal" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="menuPrincipalBoton" layoutX="298.0" layoutY="428.0" mnemonicParsing="false" onAction="#irMenuPrincipal" prefHeight="42.0" prefWidth="164.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Volver al Menu Principal" textAlignment="CENTER" wrapText="true" />
          </children>
       </Pane>
    </children>

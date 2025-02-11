@@ -295,7 +295,7 @@
                                     </Pane>
                                     <Pane id="Motor" layoutX="501.0" layoutY="160.0" prefHeight="244.0" prefWidth="217.0" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 5;">
                                        <children>
-                                          <Text layoutX="89.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frenos">
+                                          <Text layoutX="49.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sistema de Frenos">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
