@@ -35,7 +35,7 @@
                   <Font name="Calibri" size="40.0" />
                </font>
             </Text>
-            <TextField fx:id="buscarField" layoutX="137.0" layoutY="97.0" onAction="#buscar" prefHeight="25.0" prefWidth="575.0" promptText="Ingrese el número de placa" />
+            <TextField fx:id="buscarField" layoutX="137.0" layoutY="97.0" prefHeight="25.0" prefWidth="575.0" promptText="Ingrese el número de placa" />
             <Label layoutX="36.0" layoutY="101.0" text="Buscar Vehículo:" />
             <Button fx:id="menuPrincipalBoton" layoutX="298.0" layoutY="428.0" mnemonicParsing="false" onAction="#irMenuPrincipal" prefHeight="42.0" prefWidth="164.0" style="-fx-background-radius: 5; -fx-background-color: rgba(56, 103, 214); -fx-text-fill: white;" text="Volver al Menu Principal" textAlignment="CENTER" wrapText="true" />
          </children>
