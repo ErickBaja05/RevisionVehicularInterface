@@ -451,6 +451,48 @@ public class RevisionControlador implements Initializable {
 
     }
 
+    @FXML
+    void elejirEstadoLuzDel(){
+        String estado = estadoLuzDel.getSelectionModel().getSelectedItem();
+        if(estado.equalsIgnoreCase("Quemadas")){
+            lumLuzDel.setValue("Deficientes");
+            lumLuzDel.setDisable(true);
+        }else{
+            lumLuzDel.setDisable(false);
+        }
+    }
+    @FXML
+    void elejirEstadoLuzTras(){
+        String estado = estadoLuzTras.getSelectionModel().getSelectedItem();
+        if(estado.equalsIgnoreCase("Quemadas")){
+            lumLuzTras.setValue("Deficientes");
+            lumLuzTras.setDisable(true);
+        }else{
+            lumLuzTras.setDisable(false);
+        }
+    }
+    @FXML
+    void elejirEstadoLuzDir(){
+        String estado = estadoLuzDir.getSelectionModel().getSelectedItem();
+        if(estado.equalsIgnoreCase("Quemadas")){
+            lumLuzDir.setValue("Deficientes");
+            lumLuzDir.setDisable(true);
+        }else{
+            lumLuzDir.setDisable(false);
+        }
+    }
+    @FXML
+    void elejirEstadoLuzNeb(){
+        String estado = estadoLuzNeb.getSelectionModel().getSelectedItem();
+        if(estado.equalsIgnoreCase("Quemadas")){
+            lumLuzNeb.setValue("Deficientes");
+            lumLuzNeb.setDisable(true);
+        }else{
+            lumLuzNeb.setDisable(false);
+        }
+    }
+
+
 
 
 

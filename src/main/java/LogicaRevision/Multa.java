@@ -39,12 +39,12 @@ public class Multa implements Serializable {
         return this.costoMulta;
     }
     public String getFechaMulta() {
-        //This object and method will set the date in the right format
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return this.fechaMulta.format(formatter);
     }
 
-    // Returns a String with the explicit information of the fine
+
     public String showFine(){
         StringBuilder multa = new StringBuilder();
         multa.append("Multa N ").append(this.idMulta).append("\n");

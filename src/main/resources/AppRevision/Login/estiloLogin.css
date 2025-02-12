@@ -7,6 +7,15 @@
 }
 #loginBoton {
     -fx-background-radius: 5;
-    -fx-background-color: rgba(56, 103, 214);
+    -fx-background-color: rgba(56, 103, 214, 1);
     -fx-text-fill: white;
+    -fx-transition: background-color 0.5s ease-in-out, text-fill 0.5s ease-in-out;
+}
+
+#loginBoton:hover{
+    -fx-border-radius: .6;
+    -fx-text-fill: black;
+    -fx-cursor: hand;
+    -fx-background-color: #F8E472;
+
 }
